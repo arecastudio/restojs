@@ -1,0 +1,59 @@
+<div class="judul-frame">
+    <strong>Kategori Meja</strong>
+</div>
+
+
+<button id="btn-add-new">Tambah Data</button>
+<div class="data-view">
+    <table border="0" class="table-data">
+        <thead>
+            <tr>
+                <th>ID</th>
+                <th>Nama/Klas</th>
+                <th>Tarif (Rp.)</th>
+                <th colspan="2">Kontrol</th>
+            </tr>
+        </thead>
+        <tbody id="id_tbody">
+        </tbody>
+    </table>
+</div>
+<div id="id-notice-content">hahah</div>
+
+<input type="hidden" id="id_table_url" value="?ref=table-data-meja-kat"/>
+
+<div id="dialog-add-new" title="Tambah Data">
+    <form autocomplete="off" class="form-input" id="form-add-new">
+	<div class="elementry">
+	    <label for="txnama">Nama</label>
+	    <input type="text" name="txnama" id="txnama" placeholder="Nama/Klas"/>
+	</div>
+	<div class="elementry">
+	    <label for="txtarif">Tarif</label>
+	    <input type="text" name="txtarif" id="txtarif" placeholder="Tarif" size="5" class="txright"/>
+	</div>	
+    </form>
+</div>
+
+<div id="dialog-edit" title="Edit Data">
+    <form autocomplete="off" class="form-input" id="form-edit">
+	<input type="hidden" id="txid_edit"/>
+	<div class="elementry">
+	    <label for="txnama_edit">Nama</label>
+	    <input type="text" name="txnama_edit" id="txnama_edit" placeholder="Nama/Klas"/>
+	</div>
+	<div class="elementry">
+	    <label for="txtarif_edit">Tarif</label>
+	    <input type="text" name="txtarif_edit" id="txtarif_edit" placeholder="Tarif" size="5" class="txright"/>
+	</div>	
+    </form>
+</div>
+
+<div id="dialog-delete" title="Delete Data">
+    <form autocomplete="off" class="form-input" id="form-delete">
+	<div id="msg-delete">
+	</div>
+    </form>
+</div>
+
+<script src="js/pages/data-meja-kat.js"></script>

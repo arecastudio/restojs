@@ -1,0 +1,62 @@
+<div class="judul-frame">
+    <strong>Data Meja</strong>
+</div>
+
+
+<button id="btn-add-new">Tambah Data</button>
+<div class="data-view">
+    <table border="0" class="table-data">
+        <thead>
+            <tr>
+                <th>Nomor Meja</th>
+                <th>Jenis</th>
+                <th colspan="2">Kontrol</th>
+            </tr>
+        </thead>
+        <tbody id="id_tbody">
+        </tbody>
+    </table>
+</div>
+<div id="id-notice-content">it is a notice box !</div>
+
+<div id="dialog-add-new" title="Tambah Data">
+    <form autocomplete="off" class="form-input" id="form-add-new">
+	<div class="elementry">
+	    <label for="txnomor">Nomor</label>
+	    <input type="text" name="txnomor" id="txnomor" placeholder="Nomor meja"/>
+	</div>
+	<div class="elementry">
+	    <label for="optjenis">Jenis</label>
+	    <select id="optjenis" class="opt-meja-kat">
+		<option value=""></option>
+	    </select>
+	</div>	
+    </form>
+</div>
+
+<div id="dialog-edit" title="Edit Data">
+    <div>Form ini hanya berfungsi untuk mengganti jenis meja !</div>
+    <hr/>
+    <form autocomplete="off" class="form-input" id="form-edit">
+	<input type="hidden" id="txid_edit"/>
+	<div class="elementry">
+	    <label for="txnomor_edit">Nomor</label>
+	    <input type="text" name="txnomor_edit" id="txnomor_edit" placeholder="Nomor meja" readonly="readonly" size="5" class="txcenter"/>
+	</div>
+	<div class="elementry">
+	    <label for="optjenis_edit">Jenis</label>
+	    <select id="optjenis_edit" class="opt-meja-kat">
+		<option value=""></option>
+	    </select>
+	</div>	
+    </form>
+</div>
+
+<div id="dialog-delete" title="Delete Data">
+    <form autocomplete="off" class="form-input" id="form-delete">
+	<div id="msg-delete">
+	</div>
+    </form>
+</div>                                            
+
+<script src="js/pages/data-meja.js"></script>

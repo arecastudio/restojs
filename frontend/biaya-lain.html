@@ -1,0 +1,41 @@
+<div class="judul-frame">
+  <strong>
+    User Data
+  </strong>
+</div>
+<hr/>
+<table>
+  <tbody>
+    <tr>
+      <td align="right">Biaya Layanan (Service)</td>
+      <td>:</td>
+      <td>Rp.&nbsp;<span id="id_service"></span></td>
+    </tr>
+    <tr>
+      <td align="right">Pajak Pertambahan Nilay (PPN)</td>
+      <td>:</td>
+      <td>
+	<span id="id_ppn"></span>&nbsp;%
+	<span id="id_waktu" style="display:none;"></span>
+      </td>
+    </tr>    
+  </tbody>
+</table>
+<button id="btn-mod-edit" data-waktu="0w" data-ppn="0p" data-service="0s">Ubah Data</button>
+
+<div id="dialog-edit" title="Edit Data">
+  <form autocomplete="off" class="form-input" id="form-edit">
+        <div class="elementry">
+            <label for="txservice_edit">Service</label>
+            <input type="text" name="txservice_edit" id="txservice_edit" size="3" class="txright"/>&nbsp;Rp.
+        </div>    
+        <div class="elementry">
+            <label for="txppn_edit">PPN</label>
+            <input type="text" name="txppn_edit" id="txppn_edit" size="3" class="txright"/>&nbsp;%
+	    <input type="hidden" id="txwaktu_edit" style="" />
+        </div>
+    </form>
+</div>
+
+
+<script src="js/pages/biaya-lain.js"></script>

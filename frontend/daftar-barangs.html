@@ -1,0 +1,45 @@
+<div class="judul-frame">
+  <strong>
+    Ubah Order
+  </strong>
+</div>
+<input type="text" id="id_txtawal" size="10" placeholder="tanggal awal" class="txcenter tanggal" readonly="readonly" />
+s/d
+<input type="text" id="id_txtakhir" size="10" placeholder="tanggal akhir" class="txcenter tanggal" readonly="readonly" />
+&nbsp;
+Sort by :&nbsp;
+<input type="radio" name="rdsort" class="radiosort" value="total"/>Total
+<input type="radio" name="rdsort" class="radiosort" value="faktur" checked="checked"/>ID
+&nbsp;
+&nbsp;
+<button id="id_btn_show">Tampilkan</button>
+
+<div class="data-view">
+    <table border="0" class="table-data">
+        <thead>
+            <tr>
+                <th>#</th>
+                <th>ID Trx</th>		
+		<th>Waktu Pesan</th>
+		<th>Waktu Pelunasan</th>
+		<th>Meja</th>
+		<th>Jml</th>
+		<th>Total</th>
+		<!--th>Op.</th-->
+                <th>Aksi</th>
+            </tr>
+        </thead>
+        <tbody id="id_tbody">
+        </tbody>
+    </table>
+</div>
+<!--div id="id-notice-content">it is a notice box !</div-->
+<div>
+  <button id="id_btn_ubah">Koreksi</button>
+</div>
+
+
+
+
+
+<script src="js/pages/daftar-barangs.js"></script>
