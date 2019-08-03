@@ -3,6 +3,20 @@ var chk_data=[];
 $('.tanggal').datepicker();
 $('.tanggal').datepicker('option','dateFormat','yy-mm-dd');
 
+$.fn.resetForms=function(){
+    chk_data=[];
+    $('#id_tbody').html('');
+};
+
+$("#dialog-edit").dialog({
+    modal: true,
+    bgiframe: true,
+    resizable: false,
+    width: 400,
+    height: 270,
+    autoOpen: false
+});
+
 $('#id_btn_show').on('click',function(){
     let tawal=$('#id_txtawal').val();
     let takhir=$('#id_txtakhir').val();
@@ -12,7 +26,8 @@ $('#id_btn_show').on('click',function(){
     //console.log('tanggal akhir: '+takhir);
 
     //reset array
-    chk_data=[];
+    //chk_data=[];
+    $.fn.resetForms();
 
     var table_url='backend/?data='+mod+'&awal='+tawal+'&akhir='+takhir+'&sort='+sort;
     $.ajax({
@@ -61,5 +76,59 @@ $('#id_tbody').on('change','.chk-koreksi',function(){
 	    }
 	}
     }
-    console.table(chk_data);
+    //console.table(chk_data);
+});
+
+$('#id_btn_koreksi').on('click',function(){
+    let data='',i=0,gtotal=0;
+    if(chk_data.length>0){
+	for(let x in chk_data){
+	    i++;
+	    gtotal+=parseInt(chk_data[x]['total']);
+	    data+='faktur:'+chk_data[x]['faktur']+'<br/>'
+	    data+='total:'+chk_data[x]['total']+'<br/>'
+	}
+    }
+    $('#id_view_koreksi').html('Dipilih: '+i+' transaksi<br/>Total: Rp. '+gtotal);
+
+    $("#dialog-edit").dialog('option', 'buttons', {
+        "Submit" : function() {
+
+	    let fdata=new FormData();
+	    fdata.append('mod',mod);
+	    fdata.append('act','edit');
+	    //fdata.append('arraydata',chk_data);
+	    fdata.append('arraydata',JSON.stringify(chk_data));
+	    
+	    console.log(fdata);
+
+	    $.ajax({
+		url:'backend/?',
+		method:'POST',
+		data:fdata,
+		contentType:false,
+		cache:false,
+		processData:false,
+		//contentType: 'multipart/form-data',
+		success:function(resp){
+		    console.log('message: '+resp);
+		    //console.table(resp);
+		    $.fn.resetForms();
+		    //$('#id-notice-content').html(resp);
+		    //$('#id-notice-content').show();
+		    
+		},
+		error:function(xhr,status,error){
+		    console.log('getting data error');
+		}
+	    });
+
+	    //$('#form-edit')[0].reset();
+	    $(this).dialog("close");
+        },
+        "Cancel" : function() {
+            $(this).dialog("close");
+        }
+    });
+    $("#dialog-edit").dialog("open");
 });

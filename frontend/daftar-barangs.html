@@ -8,8 +8,8 @@ s/d
 <input type="text" id="id_txtakhir" size="10" placeholder="tanggal akhir" class="txcenter tanggal" readonly="readonly" />
 &nbsp;
 Sort by :&nbsp;
-<input type="radio" name="rdsort" class="radiosort" value="total"/>Total
-<input type="radio" name="rdsort" class="radiosort" value="faktur" checked="checked"/>ID
+<input type="radio" name="rdsort" class="radiosort" value="total" checked="checked"/>Total
+<input type="radio" name="rdsort" class="radiosort" value="faktur"/>ID
 &nbsp;
 &nbsp;
 <button id="id_btn_show">Tampilkan</button>
@@ -35,11 +35,16 @@ Sort by :&nbsp;
 </div>
 <!--div id="id-notice-content">it is a notice box !</div-->
 <div>
-  <button id="id_btn_ubah">Koreksi</button>
+  <button id="id_btn_koreksi">Koreksi</button>
 </div>
 
-
-
+<div id="dialog-edit" title="Edit Data">
+  <form autocomplete="off" class="form-input" id="form-edit">
+        <div class="elementry">
+	  <span id="id_view_koreksi"></span>
+        </div>
+    </form>
+</div>
 
 
 <script src="js/pages/daftar-barangs.js"></script>
