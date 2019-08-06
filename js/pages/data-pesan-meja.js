@@ -118,8 +118,9 @@ $.fn.updatePesananTable=function(){
 	    datax+='<tr>';
 	    datax+='<td>'+data_dipilih[x]['nama']+'</td>';
 	    datax+='<td align="right">'+data_dipilih[x]['harga']+'</td>';	    
-	    datax+='<td align="right"><span style="font-weight:bold;color:blue;" class="jml">'+data_dipilih[x]['jumlah']+'</span></td>';    
-	    datax+='<td align="center"><button class="btn-min" data-id="'+data_dipilih[x]['id']+'" data-index="'+x+'" title="Kurang">&minus;</button>';
+	    datax+='<td align="right"><span style="font-weight:bold;color:blue;" class="jml">'+data_dipilih[x]['jumlah']+'</span></td>';
+	    datax+='<td align="center"><input type="checkbox" class="chk-bungkus" data-id="'+data_dipilih[x]['id']+'"/></td>';
+	    datax+='<td align="center"><button class="btn-min" data-id="'+data_dipilih[x]['id']+'" data-index="'+x+'" title="Kurang">&minus;</button>';	    
 	    datax+='&nbsp;<button class="btn-add" data-id="'+data_dipilih[x]['id']+'" data-index="'+x+'" title="Tambah">&plus;</button>';
 	    datax+='&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<button class="btn-del" data-id="'+data_dipilih[x]['id']+'" data-index="'+x+'" title="Hapus">&times;</button></td>';
 	    datax+='</tr>';	    
@@ -159,6 +160,7 @@ $('#txfilter-menu').on('keyup',function(){
 });
 
 $('#id_tbody_menu').on('click','.btn-mod-tambahkan',function(){
+
     let tid=$(this).attr('data-id');
     let tnama=$(this).attr('data-nama');
     let tharga=$(this).attr('data-harga');
@@ -246,4 +248,11 @@ $('#id_tbody_draft').on('click','.btn-del',function(){
     
     console.table(data_dipilih);
     $.fn.updatePesananTable();
+});
+
+
+$('#id_tbody_draft').on('click','.chk-bungkus',function(){
+    let id=$(this).attr('data-id');
+    let _status=$(this).is(':checked');
+    console.log('ID: '+id+'\nChecked: '+_status);
 });

@@ -35,11 +35,11 @@ $.fn.resetForms=function(){
 	    //console.log('total: '+persen100);
 
 	    let jkat=[],psen=0;
-	    for(let x in dx['data_kategori']){
-		psen=parseInt(dx['data_kategori'][x]['jml'])/persen100;
+	    for(let x in dx['data_favorite']){
+		psen=parseInt(dx['data_favorite'][x]['jml'])/persen100;
 		jkat[x]={		    
 		    y:psen*100,
-		    label:dx['data_kategori'][x]['kategori']
+		    label:dx['data_favorite'][x]['kategori']
 		};
 	    }
 	    //console.table(jkat);
@@ -52,7 +52,7 @@ $.fn.resetForms=function(){
 		};
 	    }
 
-	    console.table(trfx);
+	    //console.table(trfx);
 	    
 
 	    //chart
@@ -60,7 +60,7 @@ $.fn.resetForms=function(){
 		animationEnabled: true,
 		theme: "light2", // "light1", "light2", "dark1", "dark2"
 		title:{
-		    text: "Ranking Menu Terjual",
+		    text: "Top 10 Sales",
 		    fontWeight:'normal',
 		},
 		axisY: {
@@ -88,7 +88,7 @@ $.fn.resetForms=function(){
 	    var pie = new CanvasJS.Chart("pieContainer", {
 		animationEnabled: true,
 		title: {
-		    text: "Persentasi Menu Favorite",
+		    text: "Top 10 Most Ordered",
 		    fontWeight:'normal',
 		},
 		data: [{
