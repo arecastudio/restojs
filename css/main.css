@@ -48,7 +48,7 @@ body{
 /*    border:1px solid #cccccc;*/
     float:left;
     padding-top:10px;
-    width:80%;
+    width:84%;
     min-height:90%;
 }
 
@@ -179,6 +179,10 @@ body{
     background-color:#f0f0f0;
 }
 
+.table-data th, td{
+    font-size:small;
+}
+
 #id-notice-content{
     color:#007744;
     font-size:small;
@@ -235,4 +239,10 @@ body{
 #id_data_payment{
     width:33%;
     float:left;    
+}
+
+.chartbox{
+    /*border:1px solid #e0e0e0;
+    border-radius:10px;
+    padding:1px;*/
 }
