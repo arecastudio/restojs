@@ -1,0 +1,25 @@
+<div class="judul-frame">
+    <strong>Laporan Pemasukan</strong>
+</div>
+
+<div>
+    <input type="radio" name="radio-type" class="rtype" value="harian" checked="checked" />&nbsp;Harian
+    <input type="radio" name="radio-type" class="rtype" value="bulanan" />&nbsp;Bulanan
+    &nbsp;
+    
+    <span id="span-bulanan">
+    <input type="text" class="txtanggal" id="txtawal" size="9px" style="text-align:center;" readonly="readonly" placeholder="tanggal awal" />
+    <span style="font-size:small;" id="sampai-dengan">s/d</span>
+    <input type="text" class="txtanggal" id="txtakhir" size="9px" style="text-align:center;" readonly="readonly" placeholder="tanggal akhir" />
+    </span>
+    
+    <span id="span-harian">
+      <input type="text" class="txtanggal" id="txtrx" size="9px" style="text-align:center;" readonly="readonly" placeholder="tanggal" />
+    </span>
+    &nbsp;
+    <button id="btn-show">Tampilkan</button>
+</div>
+
+
+
+<script src="js/pages/laporan-bulanan.js"></script>

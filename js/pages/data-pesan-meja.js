@@ -4,6 +4,7 @@ const mod="pesan-meja";
 
 const txnomor_meja=$('#txnomor-meja').val();
 var data_dipilih=[];
+var data_dibungkus=[];
 var data_json=[];
 
 $.fn.showTableData=function(){
