@@ -3,9 +3,14 @@ const mod="laporan-bulanan";
 $('.txtanggal').datepicker();
 $('.txtanggal').datepicker('option','dateFormat','yy-mm-dd');
 
+$('#tb-daily').hide();
+$('#notifikasi').hide();
+
 $('#btn-show').on('click',function(){
     let jenis=$("input:radio[name=radio-type]:checked").val();
     //console.log('Jenisnya: '+jenis);
+
+    $('#notifikasi').show();
 
     let data={};
     let fdata=new FormData();
@@ -67,6 +72,7 @@ $('#btn-show').on('click',function(){
 	    //console.table(dx['data_tabel']);
 	    
 	    //$('#id-notice-content').show();
+	    $('#notifikasi').hide();
 
 
 	    let td='',i=0,gtotal=0,bungkus='&times;';;
@@ -100,6 +106,40 @@ $('#btn-show').on('click',function(){
 	    td+='<th colspan="5">&nbsp;</th>';
 	    td+='</tr>';*/
 	    $('#id_tbody').html(td);
+
+
+	    td='';i=0;
+	    for(let x in dx['data_rekap']){
+		i++;
+		td+='';
+		td+='<tr>';
+		td+='<td align="right">'+i+'&nbsp;</td>';
+		td+='<td align="center">'+dx['data_rekap'][x]['jam']+'</td>';
+		td+='<td align="center">'+dx['data_rekap'][x]['id']+'</td>';
+		td+='<td align="center">'+dx['data_rekap'][x]['meja']+'</td>';
+		td+='<td align="right">'+dx['data_rekap'][x]['fharga']+'</td>';
+		td+='<td align="right">'+dx['data_rekap'][x]['jumlah']+'</td>';
+		td+='<td align="right">'+dx['data_rekap'][x]['ftotal']+'</td>';
+		td+='<td align="right">'+dx['data_rekap'][x]['diskon']+'&nbsp;%</td>';
+		td+='<td align="right">'+dx['data_rekap'][x]['ftarif_meja']+'</td>';
+		td+='<td align="right">'+dx['data_rekap'][x]['fgtotal']+'</td>';
+	    }
+	    $('#id_tbody_rekap').html(td);
+
+	    //tbody_daily
+	    //console.table(dx['data_harian']);
+	    td='';i=0;
+	    for(let x in dx['data_harian']){
+		i++;
+		td+='';
+		td+='<tr>';
+		td+='<td align="right">'+i+'&nbsp;</td>';
+		td+='<td align="center">'+dx['data_harian'][x]['tgl']+'</td>';
+		td+='<td align="center">'+dx['data_harian'][x]['fjml_order']+'</td>';
+		td+='<td align="center">'+dx['data_harian'][x]['fgtotal']+'</td>';
+	    }
+	    $('#id_tbody_daily').html(td);
+	    
 	    
 	},
 	error:function(xhr,status,error){
@@ -113,18 +153,22 @@ $.fn.showResult=function(){
     let jenis=$("input:radio[name=radio-type]:checked").val();
     //console.log('Jenisnya: '+jenis);
     $('#id_tbody').html('');
+    $('#id_tbody_rekap').html('');
+    $('#id_tbody_daily').html('');
 
     if(jenis=='harian'){
 	$('#span-harian').css('display','inline');
 	//harus reset hingga di tabel
 	$('#txtawal').val('');
 	$('#txtakhir').val('');
-	$('#span-bulanan').css('display','none');	
+	$('#span-bulanan').css('display','none');
+	$('#tb-daily').hide();
     }else{
 	//reset hingga di tabel
 	$('#txtrx').val('');
 	$('#span-harian').css('display','none');	
 	$('#span-bulanan').css('display','inline');
+	$('#tb-daily').show();
     }
 }
 

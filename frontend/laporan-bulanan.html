@@ -20,32 +20,80 @@
     <button id="btn-show">Tampilkan</button>
 </div>
 
-<br/>
-<br/>
-
-<strong>Detail Transaksi</strong>
-<div class="data-view">
-    <table border="0" class="table-data">
-        <thead>
-            <tr>
-		<th>#</th>
-		<th>Trx</th>
-		<th>Meja</th>
-		<th>Menu</th>
-		<th>Harga</th>
-		<th>Jml</th>
-		<th>Total</th>
-		<th>Bngks</th>
-		<th>Jam</th>
-		<th>Pelayan</th>
-		<th>Kategori</th>
-		<th>Disc</th>	    
-            </tr>
-        </thead>
-        <tbody id="id_tbody">
-        </tbody>
-    </table>
+<div id="notifikasi" style="text-align:center;margin:5px;">
+    Tunggu hingga proses selesai...
+    <br/>
+    <br/>
+    <img src="images/icon_loading.gif" />
 </div>
 
+<div class="table-report" id="tb-daily">
+  <strong>Transaksi Harian</strong>
+  <div class="data-view">
+    <table border="0" class="table-data">
+      <thead>
+        <tr>
+	  <th>#</th>
+	  <th>Tgl</th>
+	  <th>Jml Order</th>
+	  <th>G. Total</th>
+        </tr>
+      </thead>
+      <tbody id="id_tbody_daily">
+      </tbody>
+    </table>
+  </div>
+</div>
+
+<div class="table-report" id="tb-rekap">
+  <strong>Rekap Transaksi</strong>
+  <div class="data-view">
+    <table border="0" class="table-data">
+      <thead>
+        <tr>
+	  <th>#</th>
+	  <th>Jam</th>
+	  <th>Trx</th>
+	  <th>Meja</th>
+	  <th>Harga</th>
+	  <th>Jml</th>
+	  <th>Sub Total</th>
+	  <th>Disc</th>
+	  <th>T. Meja</th>
+	  <th>Total</th>
+        </tr>
+      </thead>
+      <tbody id="id_tbody_rekap">
+      </tbody>
+    </table>
+  </div>
+</div>
+
+
+<div class="table-report" id="tb-detail">
+  <strong>Detail Transaksi</strong>
+  <div class="data-view">
+    <table border="0" class="table-data">
+      <thead>
+        <tr>
+	  <th>#</th>
+	  <th>Trx</th>
+	  <th>Meja</th>
+	  <th>Menu</th>
+	  <th>Harga</th>
+	  <th>Jml</th>
+	  <th>Total</th>
+	  <th>Bngks</th>
+	  <th>Jam</th>
+	  <th>Pelayan</th>
+	  <th>Kategori</th>
+	  <th>Disc</th>	    
+        </tr>
+      </thead>
+      <tbody id="id_tbody">
+      </tbody>
+    </table>
+  </div>
+</div>
 
 <script src="js/pages/laporan-bulanan.js"></script>
