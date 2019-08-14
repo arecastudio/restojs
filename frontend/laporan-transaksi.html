@@ -1,0 +1,57 @@
+<div class="judul-frame">
+    <strong>Laporan Pajak</strong>
+</div>
+
+<br/>
+
+<div>
+    <label for="id_opttahun">Tahun</label>
+    <select id="id_opttahun">
+	<option value="2019">2019</option>
+	<option value="2018">2018</option>
+	<option value="2017">2017</option>
+	<option value="2016">2016</option>
+	<option value="2015">2015</option>
+    </select>
+
+    &nbsp;
+    &nbsp;
+    &nbsp;
+
+    <label for="id_optbulan">Bulan</label>
+    <select id="id_optbulan">
+    </select>
+
+    &nbsp;
+    &nbsp;
+    &nbsp;
+    &nbsp;
+    &nbsp;
+
+    <button id="id_btnshow">Tampilkan</button>
+</div>
+
+
+<br/>
+
+
+
+<div class="data-view">
+    <table border="0" class="table-data">
+	<thead>
+            <tr>
+		<th>#</th>
+		<th>Tanggal</th>
+		<th>No. Transaksi</th>
+		<th>Total Harga Termasuk PPN</th>		
+		<th>Total Harga Tanpa PPN</th>		
+		<th>PPN 10%</th>
+		<th>Jumlah PPN</th>
+            </tr>
+	</thead>
+	<tbody id="id_tbody">
+	</tbody>
+    </table>
+</div>
+
+<script src="js/pages/laporan-transaksi.js"></script>
