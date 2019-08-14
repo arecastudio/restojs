@@ -31,3 +31,21 @@ $('#id_btnshow').on('click',function(){
 
     console.log('Tahun: '+tahun+', Bulan: '+bulan);
 });
+
+
+$.ajax({
+    url:'backend/?data='+mod,
+    method:'GET',
+    success:function(resp){	
+	let dx=JSON.parse(resp);
+	console.log(dx);
+	let tahuns='';
+	for(let x in dx){
+	    tahuns+='<option value="'+dx[x]['tahun']+'">'+dx[x]['tahun']+'</option>';
+	}
+	$('#id_opttahun').html(tahuns);
+    },
+    error:function(xhr,status,error){
+	console.log('getting data error');
+    }    
+});
