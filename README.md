@@ -9,8 +9,8 @@ This applicatiion is an updated version to replace an old one I built several ye
 
 ## TODO
 ### Concern August 17, 2019
--buat 2 query laporan-pajak
--1 untuk laporan2 sebelum update yang menggunakan perhitungan lama/ keliru
--1 untuk laporan baru, dengan perbaikan pada perhitungan laporan
--bicarakan dengan client tentang monthly loss akibat kekeliruan
--tentukan cut-off bersama
+- [x] buat 2 query laporan-pajak
+- [] 1 untuk laporan2 sebelum update yang menggunakan perhitungan lama/ keliru
+- [] 1 untuk laporan baru, dengan perbaikan pada perhitungan laporan
+- [] bicarakan dengan client tentang monthly loss akibat kekeliruan
+- [] tentukan cut-off bersama
