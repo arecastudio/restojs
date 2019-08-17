@@ -54,16 +54,18 @@ $('#id_btnshow').on('click',function(){
 	    let dx=JSON.parse(resp);
 	    //console.table(dx);
 
-	    let td='',i=0;
+	    let td='',i=0,_ppn=0;
 	    for(let x in dx){
+		_ppn+=parseInt(dx[x]['ppn']);
 		i++;
 		td+='<tr>';
 		td+='<td>'+i+'</td>';
-		td+='<td>'+dx[x]['tanggal']+'</td>';
+		td+='<td>'+dx[x]['id']+'</td>';
+		td+='<td>'+dx[x]['tanggal']+'</td>';		
 		td+='<td>'+dx[x]['ftotal_ppn']+'</td>';
 		td+='<td>'+dx[x]['ftotal_non_ppn']+'</td>';
 		td+='<td>'+dx[x]['fppn']+'</td>';
-		td+='<td>'+dx[x]['fjumlah_ppn']+'</td>';
+		td+='<td>'+_ppn+'</td>';
 		td+='</tr>';
 	    }
 	    $('#id_tbody').html(td);
