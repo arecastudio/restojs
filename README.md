@@ -8,7 +8,8 @@ This application is an updated version to replace an old one I built several yea
 
 ## TODO
 ### Task(s) started on August 17, 2019
-- [x] Create two queries for taxes-report
+- [ ] Adding table export to tax-report
+- [x] Create two queries for tax-report
 - [ ] Firs for the old report with misleaded formula
 - [ ] Last for the new report with corrected formula
 - [ ] Discuss with the client about monthly loss by this issue

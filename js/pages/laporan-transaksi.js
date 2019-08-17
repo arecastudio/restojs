@@ -59,13 +59,14 @@ $('#id_btnshow').on('click',function(){
 		_ppn+=parseInt(dx[x]['ppn']);
 		i++;
 		td+='<tr>';
-		td+='<td>'+i+'</td>';
-		td+='<td>'+dx[x]['id']+'</td>';
-		td+='<td>'+dx[x]['tanggal']+'</td>';		
-		td+='<td>'+dx[x]['ftotal_ppn']+'</td>';
-		td+='<td>'+dx[x]['ftotal_non_ppn']+'</td>';
-		td+='<td>'+dx[x]['fppn']+'</td>';
-		td+='<td>'+_ppn+'</td>';
+		td+='<td align="right">'+i+'</td>';
+		td+='<td align="center">'+dx[x]['id']+'</td>';
+		td+='<td align="right">'+dx[x]['ftanggal']+'</td>';		
+		td+='<td align="right">'+dx[x]['ftotal_ppn']+'</td>';
+		td+='<td align="right">'+dx[x]['ftotal_non_ppn']+'</td>';
+		td+='<td align="right">'+dx[x]['fppn']+'</td>';
+//.toString().replace(/(\d)(?=(\d{3})+(?!\d))/g, "$1,")		
+		td+='<td align="right">'+_ppn.toString().replace(/(\d)(?=(\d{3})+(?!\d))/g, "$1,")+'</td>';
 		td+='</tr>';
 	    }
 	    $('#id_tbody').html(td);
