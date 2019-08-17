@@ -9,8 +9,8 @@ This applicatiion is an updated version to replace an old one I built several ye
 
 ## TODO
 ### Concern August 17, 2019
-- [x] buat 2 query laporan-pajak
-- [] 1 untuk laporan2 sebelum update yang menggunakan perhitungan lama/ keliru
-- [] 1 untuk laporan baru, dengan perbaikan pada perhitungan laporan
-- [] bicarakan dengan client tentang monthly loss akibat kekeliruan
-- [] tentukan cut-off bersama
+- [x] Create two queries for taxes-report
+- [ ] Firs for the old report with misleading formula
+- [ ] Last for the new report with corrected formula
+- [ ] Discuss with the client about monthly loss by this issue
+- [ ] Deciede the cut-off date to fix this issue
