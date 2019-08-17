@@ -61,20 +61,20 @@
 
 .xlsx:before {
   content: "";
-  background: darkgreen url(../img/xlsx.svg) no-repeat center;
+  background: darkgreen url('images/te/xlsx.svg') no-repeat center;
 }
 
 .xls:before {
   content: "";
-  background: green url(../img/xls.svg) no-repeat center;
+  background: green url('images/te/xls.svg') no-repeat center;
 }
 
 .csv:before {
   content: "";
-  background: blue url(../img/csv.svg) no-repeat center;
+  background: blue url(../images/te/csv.svg) no-repeat center;
 }
 
 .txt:before {
   content: "";
-  background: purple url(../img/txt.svg) no-repeat center;
+  background: purple url(../images/te/txt.svg) no-repeat center;
 }
