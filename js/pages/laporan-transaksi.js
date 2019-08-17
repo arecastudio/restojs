@@ -17,6 +17,7 @@ array_bulan={
 
 $('#notifikasi').hide();
 //console.log(array_bulan[1]);
+$('#id_tampilan').html('');
 
 let opt='';
 for(let x in array_bulan){
@@ -29,8 +30,10 @@ $('#id_btnshow').on('click',function(){
     $('#notifikasi').show();
     let tahun=$('#id_opttahun').val();
     let bulan=$('#id_optbulan').val();
+    let nama_file_xls='laporan_pajak_'+tahun+'_'+bulan;
 
     console.log('Tahun: '+tahun+', Bulan: '+bulan);
+    $('#id_tampilan').html('');
 
     let fdata=new FormData();
     fdata.append('mod',mod);
@@ -53,23 +56,28 @@ $('#id_btnshow').on('click',function(){
 	    $('#notifikasi').hide();
 	    let dx=JSON.parse(resp);
 	    //console.table(dx);
-
-	    let td='',i=0,_ppn=0;
+	    let tr='',i=0,_ppn=0;
 	    for(let x in dx){
 		_ppn+=parseInt(dx[x]['ppn']);
 		i++;
-		td+='<tr>';
-		td+='<td align="right">'+i+'</td>';
-		td+='<td align="center">'+dx[x]['id']+'</td>';
-		td+='<td align="right">'+dx[x]['ftanggal']+'</td>';		
-		td+='<td align="right">'+dx[x]['ftotal_ppn']+'</td>';
-		td+='<td align="right">'+dx[x]['ftotal_non_ppn']+'</td>';
-		td+='<td align="right">'+dx[x]['fppn']+'</td>';
+		tr+='<tr>';
+		tr+='<td align="right">'+i+'</td>';
+		tr+='<td align="center">'+dx[x]['id']+'</td>';
+		tr+='<td align="right">'+dx[x]['ftanggal']+'</td>';		
+		tr+='<td align="right">'+dx[x]['total_ppn']+'</td>';
+		tr+='<td align="right">'+dx[x]['total_non_ppn']+'</td>';
+		tr+='<td align="right">'+dx[x]['ppn']+'</td>';
 //.toString().replace(/(\d)(?=(\d{3})+(?!\d))/g, "$1,")		
-		td+='<td align="right">'+_ppn.toString().replace(/(\d)(?=(\d{3})+(?!\d))/g, "$1,")+'</td>';
-		td+='</tr>';
+		//td+='<td align="right">'+_ppn.toString().replace(/(\d)(?=(\d{3})+(?!\d))/g, "$1,")+'</td>';
+		tr+='<td align="right">'+_ppn+'</td>';
+		tr+='</tr>';
 	    }
-	    $('#id_tbody').html(td);
+	    //$('#id_tbody').html(tr);
+	    let tabel='<table border="1" class="table-datax" id="'+nama_file_xls+'" style="border-collapse:collapse;"><thead><tr><th>#</th><th>Trx ID</th><th>Tanggal</th><th>Total Harga Termasuk PPN</th><th>Total Harga Tanpa PPN</th><th>PPN 10%</th><th>Jml PPN</th></tr></thead><tbody>';
+	    tabel+=tr;
+	    tabel+='</tbody></table>';
+	    $('#id_tampilan').html(tabel);
+	    ExportTable();
 	},
 	error:function(xhr,status,error){
 	    console.log('getting data error');
@@ -95,3 +103,25 @@ $.ajax({
 	console.log('getting data error');
     }    
 });
+
+
+$('#id_btnPrint').on('click',function(){
+    console.log('Print Raporan Tax');
+    //$('#id_tableTex').tableExport();
+});
+
+
+function ExportTable(){
+    $("table").tableExport({
+	headings: true,                    // (Boolean), display table headings (th/td elements) in the <thead>
+	footers: true,                     // (Boolean), display table footers (th/td elements) in the <tfoot>
+	//formats: ["xls", "csv", "txt"],    // (String[]), filetypes for the export
+	formats: ["xls"],
+	fileName: "id",                    // (id, String), filename for the downloaded file
+	bootstrap: false,                   // (Boolean), style buttons using bootstrap
+	position: "well" ,                // (top, bottom), position of the caption element relative to table
+	ignoreRows: null,                  // (Number, Number[]), row indices to exclude from the exported file
+	ignoreCols: null,                 // (Number, Number[]), column indices to exclude from the exported file
+	ignoreCSS: ".tableexport-ignore"   // (selector, selector[]), selector(s) to exclude from the exported file
+    });
+}
