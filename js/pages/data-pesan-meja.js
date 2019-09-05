@@ -139,7 +139,7 @@ $.fn.updatePesananTable=function(){
 	    datax+='<td>'+data_dibungkus[x]['nama']+'</td>';
 	    datax+='<td align="right">'+data_dibungkus[x]['harga']+'</td>';	    
 	    datax+='<td align="right"><span style="font-weight:bold;color:blue;" class="jml">'+data_dibungkus[x]['jumlah']+'</span></td>';
-	    datax+='<td align="center"><input type="checkbox" class="chk-bungkus" data-id="'+data_dibungkus[x]['id']+'"/></td>';
+	    datax+='<td align="center"><input type="checkbox" class="chk-bungkus" data-id="'+data_dibungkus[x]['id']+'" checked="checked" /></td>';
 	    datax+='<td align="center"><button class="btn-min" data-id="'+data_dibungkus[x]['id']+'" data-index="'+x+'" title="Kurang">&minus;</button>';	    
 	    datax+='&nbsp;<button class="btn-add" data-id="'+data_dibungkus[x]['id']+'" data-index="'+x+'" title="Tambah">&plus;</button>';
 	    datax+='&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<button class="btn-del" data-id="'+data_dibungkus[x]['id']+'" data-index="'+x+'" title="Hapus">&times;</button></td>';
@@ -284,6 +284,7 @@ $('#id_tbody_draft').on('click','.chk-bungkus',function(){
 	console.log('status-nya: '+status);
 	let sama=0;
 	let _jumlah_dibungkus=1;
+	let index=null;
 	//ambil data
 	for(let x in data_dipilih){
 	    if(data_dipilih[x]['id']==id){
@@ -296,22 +297,24 @@ $('#id_tbody_draft').on('click','.chk-bungkus',function(){
 	for(let x in data_dibungkus){
 	    if(data_dibungkus[x]['id']==id){
 		sama=1;
-		_jumlah_dibungkus=data_dipilih[x]['jumlah'];
+		_jumlah_dibungkus=data_dibungkus[x]['jumlah'];
+		index=x;
 	    }
 	}
 
-	if(sama==0){
-	    _jumlah_dibungkus=0;
+	if(sama!=0){
+	    //_jumlah_dibungkus=0;
+	    data_dibungkus[index]['jumlah']=parseInt(_jumlah)+parseInt(_jumlah_dibungkus);
+	}else{
+	    data_dibungkus.push({
+		'id':id,
+		'nama':_nama,
+		'harga':_harga,
+		'jumlah':_jumlah,
+	    });
 	}
 
-	let _grand_jml=parseInt(_jumlah)+parseInt(_jumlah_dibungkus);
-	
-	data_dibungkus.push({
-	    'id':id,
-	    'nama':_nama,
-	    'harga':_harga,
-	    'jumlah':_grand_jml,
-	});
+	//let _grand_jml=parseInt(_jumlah)+parseInt(_jumlah_dibungkus);
 
 	//keluarkan dari jumlah_dipilih
 	let data_tmp=[];
@@ -330,9 +333,9 @@ $('#id_tbody_draft').on('click','.chk-bungkus',function(){
 	
     }
 
-    console.log('dibungkus');
-    console.table(data_dibungkus);
-    console.log('dipilih');
-    console.table(data_dipilih);
+    //console.log('dibungkus');
+    //console.table(data_dibungkus);
+    //console.log('dipilih');
+    //console.table(data_dipilih);
     //$.fn.updatePesananTable();
 });
