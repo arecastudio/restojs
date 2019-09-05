@@ -72,32 +72,24 @@ $('#id_btnshow').on('click',function(){
 	processData:false,
 	//contentType: 'multipart/form-data',
 	success:function(resp){
-	    console.log('message: '+resp);
+	    //console.log('message: '+resp);
 	    $('#notifikasi').hide();
 	    let dx=JSON.parse(resp);
 	    //console.table(dx);
 	    let tr='',i=0,_ppn=0;
-	    /*
-	    for(let x in dx){
-		_ppn+=parseInt(dx[x]['ppn']);
+	    
+	    for(let x in dx){	
 		i++;
 		tr+='<tr>';
 		tr+='<td align="right">'+i+'</td>';
-		tr+='<td align="center">'+dx[x]['id']+'</td>';
-		tr+='<td align="right">'+dx[x]['ftanggal']+'</td>';		
-		tr+='<td align="right">'+dx[x]['total_ppn']+'</td>';
-		tr+='<td align="right">'+dx[x]['total_non_ppn']+'</td>';
-		tr+='<td align="right">'+dx[x]['ppn']+'</td>';
-		tr+='<td align="right">'+_ppn+'</td>';
+		tr+='<td align="center">'+dx[x]['operator']+'</td>';
+		tr+='<td align="right">'+dx[x]['nomeja']+'</td>';		
+		tr+='<td align="right">'+dx[x]['tanggal']+'</td>';
+		tr+='<td align="right">'+dx[x]['produk']+'</td>';
+		tr+='<td align="right">'+dx[x]['jumlah']+'</td>';
 		tr+='</tr>';
-	    }*/
-	    //$('#id_tbody').html(tr);
-	    /*
-	    let tabel='<table border="1" class="table-datax" id="'+nama_file_xls+'" style="border-collapse:collapse;"><thead><tr><th>#</th><th>Trx ID</th><th>Tanggal</th><th>Total Harga Termasuk PPN</th><th>Total Harga Tanpa PPN</th><th>PPN 10%</th><th>Jml PPN</th></tr></thead><tbody>';
-	    tabel+=tr;
-	    tabel+='</tbody></table>';
-	    $('#id_tampilan').html(tabel);
-	    ExportTable();*/
+	    }
+	    $('#id_tbody').html(tr);
 	},
 	error:function(xhr,status,error){
 	    console.log('getting data error');
