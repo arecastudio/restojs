@@ -83,9 +83,9 @@ $('#id_btnshow').on('click',function(){
 		tr+='<tr>';
 		tr+='<td align="right">'+i+'</td>';
 		tr+='<td align="center">'+dx[x]['operator']+'</td>';
-		tr+='<td align="right">'+dx[x]['nomeja']+'</td>';		
-		tr+='<td align="right">'+dx[x]['tanggal']+'</td>';
-		tr+='<td align="right">'+dx[x]['produk']+'</td>';
+		tr+='<td align="center">'+dx[x]['nomeja']+'</td>';		
+		tr+='<td align="center">'+dx[x]['tanggal']+'</td>';
+		tr+='<td>'+dx[x]['produk']+'</td>';
 		tr+='<td align="right">'+dx[x]['jumlah']+'</td>';
 		tr+='</tr>';
 	    }
