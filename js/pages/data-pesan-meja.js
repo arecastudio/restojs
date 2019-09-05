@@ -1,6 +1,7 @@
 const mod="pesan-meja";
 
 //$('.money').toLocaleString();
+console.log(mod);
 
 const txnomor_meja=$('#txnomor-meja').val();
 var data_dipilih=[];
@@ -103,7 +104,7 @@ $.fn.resetForms=function(){
 	    //untuk dapat diproses sebagai array ber-index
 	    let x=JSON.parse(resp);
 	    data_json=x;
-	    console.table(data_json);
+	    //console.table(data_json);
 	    $.fn.showTableData();
         },
         error:function(xhr,status,error){
@@ -113,6 +114,8 @@ $.fn.resetForms=function(){
 }
 
 $.fn.updatePesananTable=function(){
+    $('#id_tbody_draft').html('');
+    
     if(data_dipilih.length>0){
 	let datax='';
 	for(let x in data_dipilih){
@@ -126,10 +129,26 @@ $.fn.updatePesananTable=function(){
 	    datax+='&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<button class="btn-del" data-id="'+data_dipilih[x]['id']+'" data-index="'+x+'" title="Hapus">&times;</button></td>';
 	    datax+='</tr>';	    
 	}
-	$('#id_tbody_draft').html(datax);
-    }else{
-	$('#id_tbody_draft').html('');
+	$('#id_tbody_draft').append(datax);
     }
+
+    if(data_dibungkus.length>0){
+	let datax='';
+	for(let x in data_dibungkus){
+	    datax+='<tr>';
+	    datax+='<td>'+data_dibungkus[x]['nama']+'</td>';
+	    datax+='<td align="right">'+data_dibungkus[x]['harga']+'</td>';	    
+	    datax+='<td align="right"><span style="font-weight:bold;color:blue;" class="jml">'+data_dibungkus[x]['jumlah']+'</span></td>';
+	    datax+='<td align="center"><input type="checkbox" class="chk-bungkus" data-id="'+data_dibungkus[x]['id']+'"/></td>';
+	    datax+='<td align="center"><button class="btn-min" data-id="'+data_dibungkus[x]['id']+'" data-index="'+x+'" title="Kurang">&minus;</button>';	    
+	    datax+='&nbsp;<button class="btn-add" data-id="'+data_dibungkus[x]['id']+'" data-index="'+x+'" title="Tambah">&plus;</button>';
+	    datax+='&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<button class="btn-del" data-id="'+data_dibungkus[x]['id']+'" data-index="'+x+'" title="Hapus">&times;</button></td>';
+	    datax+='</tr>';	    
+	}
+	$('#id_tbody_draft').append(datax);
+    }
+    
+
 }
 
 $.fn.resetForms();
@@ -253,7 +272,67 @@ $('#id_tbody_draft').on('click','.btn-del',function(){
 
 
 $('#id_tbody_draft').on('click','.chk-bungkus',function(){
+    //deklarasi
     let id=$(this).attr('data-id');
     let _status=$(this).is(':checked');
     console.log('ID: '+id+'\nChecked: '+_status);
+    let _nama='';
+    let _harga='';
+    let _jumlah='';
+    //pindahkan dari array data_dipilih ke data_dibungkus vice versa
+    if(_status==true){
+	console.log('status-nya: '+status);
+	let sama=0;
+	let _jumlah_dibungkus=1;
+	//ambil data
+	for(let x in data_dipilih){
+	    if(data_dipilih[x]['id']==id){
+		_nama=data_dipilih[x]['nama']
+		_harga=data_dipilih[x]['harga']
+		_jumlah=data_dipilih[x]['jumlah']
+	    }
+	}
+
+	for(let x in data_dibungkus){
+	    if(data_dibungkus[x]['id']==id){
+		sama=1;
+		_jumlah_dibungkus=data_dipilih[x]['jumlah'];
+	    }
+	}
+
+	if(sama==0){
+	    _jumlah_dibungkus=0;
+	}
+
+	let _grand_jml=parseInt(_jumlah)+parseInt(_jumlah_dibungkus);
+	
+	data_dibungkus.push({
+	    'id':id,
+	    'nama':_nama,
+	    'harga':_harga,
+	    'jumlah':_grand_jml,
+	});
+
+	//keluarkan dari jumlah_dipilih
+	let data_tmp=[];
+	for(let x in data_dipilih){
+	    if(data_dipilih[x]['id']!=id){
+		data_tmp.push({
+		    'id':data_dipilih[x]['id'],
+		    'nama':data_dipilih[x]['nama'],
+		    'harga':data_dipilih[x]['harga'],
+		    'jumlah':data_dipilih[x]['jumlah'],
+		});
+	    }
+	}
+
+	data_dipilih=data_tmp;
+	
+    }
+
+    console.log('dibungkus');
+    console.table(data_dibungkus);
+    console.log('dipilih');
+    console.table(data_dipilih);
+    //$.fn.updatePesananTable();
 });
