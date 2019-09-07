@@ -299,17 +299,49 @@ $('#id_tbody_draft').on('click','.chk-bungkus',function(){
     let index=$(this).attr('data-index');
     let uuid=$(this).attr('data-uuid');
     let _status=$(this).is(':checked');
+    let sama=0;
     console.log('ID: '+id+'\nChecked: '+_status);
 
     if(_status==true){
-	data_dipilih[index]['bungkus']=1;
+	/*
+	  find the data in array list
+	  if match, ask for the change
+	  or delete.
+	*/
+	sama=0;
+	for(let x in data_dipilih){
+	    if(data_dipilih[x]['id']==id && data_dipilih[x]['bungkus']==1){
+		//data with same id and same status of wrapping is exists
+		sama=1;
+	    }
+	}
+
+	if(sama==0){
+	    data_dipilih[index]['bungkus']=1;
+	}else{
+	    //refresh to prefent checkbox change status
+	    $.fn.updatePesananTable();
+	}
     }else{
 	/*
 	  find the data in array list
 	  if match, ask for the change
 	  or delete.
-	 */
-	data_dipilih[index]['bungkus']=0;
+	*/
+	sama=0;
+	for(let x in data_dipilih){
+	    if(data_dipilih[x]['id']==id && data_dipilih[x]['bungkus']==0){
+		//data with same id and same status of wrapping is exists
+		sama=1;
+	    }
+	}
+
+	if(sama==0){
+	    data_dipilih[index]['bungkus']=0;
+	}else{
+	    //refresh to prefent checkbox change status
+	    $.fn.updatePesananTable();
+	}
     }    
 
 });
