@@ -8,6 +8,19 @@ var data_dipilih=[];
 var data_dibungkus=[];
 var data_json=[];
 
+//bof creadit
+//https://www.w3resource.com/javascript-exercises/javascript-math-exercise-23.php
+function create_UUID(){
+    var dt = new Date().getTime();
+    var uuid = 'xxxxxxxx-xxxx-4xxx-yxxx-xxxxxxxxxxxx'.replace(/[xy]/g, function(c) {
+        var r = (dt + Math.random()*16)%16 | 0;
+        dt = Math.floor(dt/16);
+        return (c=='x' ? r :(r&0x3|0x8)).toString(16);
+    });
+    return uuid;
+}
+//eof
+
 $.fn.showTableData=function(){
     let menux=$("input:radio[name=radiomenu]:checked").val();
     let tfilter=$('#txfilter-menu').val().trim().toLowerCase();
@@ -123,16 +136,20 @@ $.fn.updatePesananTable=function(){
 	    datax+='<td>'+data_dipilih[x]['nama']+'</td>';
 	    datax+='<td align="right">'+data_dipilih[x]['harga']+'</td>';	    
 	    datax+='<td align="right"><span style="font-weight:bold;color:blue;" class="jml">'+data_dipilih[x]['jumlah']+'</span></td>';
-	    datax+='<td align="center"><input type="checkbox" class="chk-bungkus" data-id="'+data_dipilih[x]['id']+'"/></td>';
-	    datax+='<td align="center"><button class="btn-min" data-id="'+data_dipilih[x]['id']+'" data-index="'+x+'" title="Kurang">&minus;</button>';	    
-	    datax+='&nbsp;<button class="btn-add" data-id="'+data_dipilih[x]['id']+'" data-index="'+x+'" title="Tambah">&plus;</button>';
-	    datax+='&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<button class="btn-del" data-id="'+data_dipilih[x]['id']+'" data-index="'+x+'" title="Hapus">&times;</button></td>';
+	    if(data_dipilih[x]['bungkus']==true){
+		datax+='<td align="center"><input type="checkbox" class="chk-bungkus" data-id="'+data_dipilih[x]['id']+'" data-index="'+x+'" data-uuid="'+data_dipilih[x]['uuid']+'" checked="checked" /></td>';
+	    }else{
+		datax+='<td align="center"><input type="checkbox" class="chk-bungkus" data-id="'+data_dipilih[x]['id']+'" data-index="'+x+'" data-uuid="'+data_dipilih[x]['uuid']+'" /></td>';
+	    }
+	    datax+='<td align="center"><button class="btn-min" data-id="'+data_dipilih[x]['id']+'" data-index="'+x+'" data-uuid="'+data_dipilih[x]['uuid']+'" title="Kurang">&minus;</button>';	    
+	    datax+='&nbsp;<button class="btn-add" data-id="'+data_dipilih[x]['id']+'" data-index="'+x+'" data-uuid="'+data_dipilih[x]['uuid']+'" title="Tambah">&plus;</button>';
+	    datax+='&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<button class="btn-del" data-id="'+data_dipilih[x]['id']+'" data-index="'+x+'" data-uuid="'+data_dipilih[x]['uuid']+'" title="Hapus">&times;</button></td>';
 	    datax+='</tr>';	    
 	}
-	$('#id_tbody_draft').append(datax);
+	$('#id_tbody_draft').html(datax);
     }
 
-    if(data_dibungkus.length>0){
+    /*if(data_dibungkus.length>0){
 	let datax='';
 	for(let x in data_dibungkus){
 	    datax+='<tr>';
@@ -146,7 +163,7 @@ $.fn.updatePesananTable=function(){
 	    datax+='</tr>';	    
 	}
 	$('#id_tbody_draft').append(datax);
-    }
+    }*/
     
 
 }
@@ -184,34 +201,39 @@ $('#id_tbody_menu').on('click','.btn-mod-tambahkan',function(){
     let tid=$(this).attr('data-id');
     let tnama=$(this).attr('data-nama');
     let tharga=$(this).attr('data-harga');
+    let uuid=create_UUID();
 
     if(data_dipilih.length>0){
 	let sama=0;
 	for(let x in data_dipilih){
-	    if(data_dipilih[x]['id']==tid){
+	    if(data_dipilih[x]['id']==tid && data_dipilih[x]['bungkus']==0){
 		sama=1;
-		let j=data_dipilih[x]['jumlah'];
-		j++;
-		data_dipilih[x]['jumlah']=j;
+		//let j=data_dipilih[x]['jumlah'];
+		//j++;
+		//data_dipilih[x]['jumlah']=j;
 	    }
 	}
 	
 	if(sama==0){
 	    data_dipilih.push({
+		'uuid':uuid,
 		'id':tid,
 		'nama':tnama,
 		'harga':tharga,
 		'jumlah':1,
+		'bungkus':0,
 	    });	    
 	}else{
 	    //console.log('ID '+tid+' exists !');
 	}
     }else{
 	data_dipilih.push({
+	    'uuid':uuid,
 	    'id':tid,
 	    'nama':tnama,
 	    'harga':tharga,
 	    'jumlah':1,
+	    'bungkus':0,
 	});
     }
 
@@ -274,68 +296,20 @@ $('#id_tbody_draft').on('click','.btn-del',function(){
 $('#id_tbody_draft').on('click','.chk-bungkus',function(){
     //deklarasi
     let id=$(this).attr('data-id');
+    let index=$(this).attr('data-index');
+    let uuid=$(this).attr('data-uuid');
     let _status=$(this).is(':checked');
     console.log('ID: '+id+'\nChecked: '+_status);
-    let _nama='';
-    let _harga='';
-    let _jumlah='';
-    //pindahkan dari array data_dipilih ke data_dibungkus vice versa
+
     if(_status==true){
-	console.log('status-nya: '+status);
-	let sama=0;
-	let _jumlah_dibungkus=1;
-	let index=null;
-	//ambil data
-	for(let x in data_dipilih){
-	    if(data_dipilih[x]['id']==id){
-		_nama=data_dipilih[x]['nama']
-		_harga=data_dipilih[x]['harga']
-		_jumlah=data_dipilih[x]['jumlah']
-	    }
-	}
+	data_dipilih[index]['bungkus']=1;
+    }else{
+	/*
+	  find the data in array list
+	  if match, ask for the change
+	  or delete.
+	 */
+	data_dipilih[index]['bungkus']=0;
+    }    
 
-	for(let x in data_dibungkus){
-	    if(data_dibungkus[x]['id']==id){
-		sama=1;
-		_jumlah_dibungkus=data_dibungkus[x]['jumlah'];
-		index=x;
-	    }
-	}
-
-	if(sama!=0){
-	    //_jumlah_dibungkus=0;
-	    data_dibungkus[index]['jumlah']=parseInt(_jumlah)+parseInt(_jumlah_dibungkus);
-	}else{
-	    data_dibungkus.push({
-		'id':id,
-		'nama':_nama,
-		'harga':_harga,
-		'jumlah':_jumlah,
-	    });
-	}
-
-	//let _grand_jml=parseInt(_jumlah)+parseInt(_jumlah_dibungkus);
-
-	//keluarkan dari jumlah_dipilih
-	let data_tmp=[];
-	for(let x in data_dipilih){
-	    if(data_dipilih[x]['id']!=id){
-		data_tmp.push({
-		    'id':data_dipilih[x]['id'],
-		    'nama':data_dipilih[x]['nama'],
-		    'harga':data_dipilih[x]['harga'],
-		    'jumlah':data_dipilih[x]['jumlah'],
-		});
-	    }
-	}
-
-	data_dipilih=data_tmp;
-	
-    }
-
-    //console.log('dibungkus');
-    //console.table(data_dibungkus);
-    //console.log('dipilih');
-    //console.table(data_dipilih);
-    //$.fn.updatePesananTable();
 });
