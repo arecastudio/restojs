@@ -21,6 +21,55 @@ function create_UUID(){
 }
 //eof
 
+$('#btn-kirim-pesanan').on('click',function(){
+    let txnote=$('#txnote').val();
+    console.log('Catatan tambahan:\n'+txnote);
+    console.log(data_dipilih);
+
+    //bof kirim data
+    let datax=JSON.stringify(data_dipilih);
+    let fdata=new FormData();
+    fdata.append('mod',mod);
+    fdata.append('act','order');
+    fdata.append('meja',txnomor_meja);
+    fdata.append('catatan',txnote);
+    fdata.append('dipilih',datax);
+
+    $.ajax({
+	url:'backend/?',
+	method:'POST',
+	data:fdata,
+	contentType:false,
+	cache:false,
+	processData:false,
+	//contentType: 'multipart/form-data',
+	success:function(resp){
+	    console.log('hasil dari server');
+	    //let dx=JSON.parse(resp);	    
+	    //console.table(dx);
+	    console.log(resp);
+	    /*if(dx['status']=='success'){
+		window.location.replace(dx['url']);
+	    }else{
+		$('#notif').html(dx['msg']);
+		$('#notif').show();
+	    }*/
+	},
+	error:function(xhr,status,error){
+	    console.log('getting data error');
+	}
+    });
+    
+    //eof kirim data
+
+    $('#txnote').val('');
+    data_dipilih=[];
+    $.fn.resetForms();
+    $.fn.updatePesananTable();
+    //tampilkan modal info bahwa proses berhasil lalu redirect
+    //window.open('?ref=jual');
+});
+
 $.fn.showTableData=function(){
     let menux=$("input:radio[name=radiomenu]:checked").val();
     let tfilter=$('#txfilter-menu').val().trim().toLowerCase();
@@ -128,8 +177,11 @@ $.fn.resetForms=function(){
 
 $.fn.updatePesananTable=function(){
     $('#id_tbody_draft').html('');
+
     
-    if(data_dipilih.length>0){
+    
+    if(data_dipilih.length>0){	
+	$('#btn-kirim-pesanan').removeAttr('disabled');
 	let datax='';
 	for(let x in data_dipilih){
 	    datax+='<tr>';
@@ -147,42 +199,13 @@ $.fn.updatePesananTable=function(){
 	    datax+='</tr>';	    
 	}
 	$('#id_tbody_draft').html(datax);
+    }else{	
+	$('#btn-kirim-pesanan').attr('disabled','true');
     }
-
-    /*if(data_dibungkus.length>0){
-	let datax='';
-	for(let x in data_dibungkus){
-	    datax+='<tr>';
-	    datax+='<td>'+data_dibungkus[x]['nama']+'</td>';
-	    datax+='<td align="right">'+data_dibungkus[x]['harga']+'</td>';	    
-	    datax+='<td align="right"><span style="font-weight:bold;color:blue;" class="jml">'+data_dibungkus[x]['jumlah']+'</span></td>';
-	    datax+='<td align="center"><input type="checkbox" class="chk-bungkus" data-id="'+data_dibungkus[x]['id']+'" checked="checked" /></td>';
-	    datax+='<td align="center"><button class="btn-min" data-id="'+data_dibungkus[x]['id']+'" data-index="'+x+'" title="Kurang">&minus;</button>';	    
-	    datax+='&nbsp;<button class="btn-add" data-id="'+data_dibungkus[x]['id']+'" data-index="'+x+'" title="Tambah">&plus;</button>';
-	    datax+='&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<button class="btn-del" data-id="'+data_dibungkus[x]['id']+'" data-index="'+x+'" title="Hapus">&times;</button></td>';
-	    datax+='</tr>';	    
-	}
-	$('#id_tbody_draft').append(datax);
-    }*/
-    
-
 }
 
 $.fn.resetForms();
 $.fn.updatePesananTable();
-
-$('#btn-kirim-pesanan').on('click',function(){
-    let txnote=$('#txnote').val();
-    console.log('Catatan tambahan:\n'+txnote);
-    console.log(data_dipilih);
-
-    $('#txnote').val('');
-    data_dipilih=[];
-    $.fn.resetForms();
-    $.fn.updatePesananTable();
-    //tampilkan modal info bahwa proses berhasil lalu redirect
-    //window.open('?ref=jual');
-});
 
 $('input:radio[name=radiomenu]').on('click',function(){
     let s=$(this).val();
