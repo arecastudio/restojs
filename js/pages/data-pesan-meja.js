@@ -298,6 +298,7 @@ $('#id_tbody_draft').on('click','.btn-min',function(){
 $('#id_tbody_draft').on('click','.btn-del',function(){
     let id=$(this).attr('data-id');
     let index=$(this).attr('data-index');
+    let uuid=$(this).attr('data-uuid');
     //console.log('ID: '+id);
     //console.log('Index: '+index);
 
@@ -306,7 +307,7 @@ $('#id_tbody_draft').on('click','.btn-del',function(){
     data_dipilih[index]['jumlah']=j;
 
     for(let x=0;x<data_dipilih.length;x++){
-	if(data_dipilih[x]['id']==id){
+	if(data_dipilih[x]['id']==id && data_dipilih[x]['uuid']==uuid){
 	    data_dipilih.splice(x,1);
 	}
     }
