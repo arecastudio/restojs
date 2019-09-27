@@ -34,6 +34,7 @@ $('#btn-kirim-pesanan').on('click',function(){
     fdata.append('meja',txnomor_meja);
     fdata.append('catatan',txnote);
     fdata.append('dipilih',datax);
+    fdata.append('uuid',create_UUID());
 
     $.ajax({
 	url:'backend/?',
