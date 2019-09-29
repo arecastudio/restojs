@@ -4,6 +4,7 @@ const mod="pesan-meja";
 console.log(mod);
 
 const txnomor_meja=$('#txnomor-meja').val();
+const operator_name='operatordummy';
 var data_dipilih=[];
 var data_dibungkus=[];
 var data_json=[];
@@ -35,6 +36,7 @@ $('#btn-kirim-pesanan').on('click',function(){
     fdata.append('catatan',txnote);
     fdata.append('dipilih',datax);
     fdata.append('uuid',create_UUID());
+    fdata.append('operator',operator_name);
 
     $.ajax({
 	url:'backend/?',
@@ -90,7 +92,7 @@ $.fn.showTableData=function(){
 			d+='<td align="right">'+i+'&nbsp;</td>';
 			d+='<td>'+data_json[x]['nama']+'</td>';
 			d+='<td align="right">'+data_json[x]['fharga']+'</td>';
-			d+='<td align="center"><button class="btn-mod-tambahkan" data-id="'+data_json[x]['id']+'" data-nama="'+data_json[x]['nama']+'" data-harga="'+data_json[x]['fharga']+'" title="Klik untuk menambahkan ke daftar pesanan !">&nearr;</button></td>';
+			d+='<td align="center"><button class="btn-mod-tambahkan" data-id="'+data_json[x]['id']+'" data-nama="'+data_json[x]['nama']+'" data-harga="'+data_json[x]['fharga']+'" data-kategori="'+data_json[x]['kategori_id']+'" title="Klik untuk menambahkan ke daftar pesanan !">&nearr;</button></td>';
 			d+='</tr>';			
 		    }
 		}else{
@@ -99,7 +101,7 @@ $.fn.showTableData=function(){
 		    d+='<td align="right">'+i+'&nbsp;</td>';
 		    d+='<td>'+data_json[x]['nama']+'</td>';
 		    d+='<td align="right">'+data_json[x]['fharga']+'</td>';
-		    d+='<td align="center"><button class="btn-mod-tambahkan" data-id="'+data_json[x]['id']+'" data-nama="'+data_json[x]['nama']+'" data-harga="'+data_json[x]['fharga']+'" title="Klik untuk menambahkan ke daftar pesanan !">&nearr;</button></td>';
+		    d+='<td align="center"><button class="btn-mod-tambahkan" data-id="'+data_json[x]['id']+'" data-nama="'+data_json[x]['nama']+'" data-harga="'+data_json[x]['fharga']+'" data-kategori="'+data_json[x]['kategori_id']+'" title="Klik untuk menambahkan ke daftar pesanan !">&nearr;</button></td>';
 		    d+='</tr>';
 		}
 	    }
@@ -113,7 +115,7 @@ $.fn.showTableData=function(){
 			d+='<td align="right">'+i+'&nbsp;</td>';
 			d+='<td>'+data_json[x]['nama']+'</td>';
 			d+='<td align="right">'+data_json[x]['fharga']+'</td>';
-			d+='<td align="center"><button class="btn-mod-tambahkan" data-id="'+data_json[x]['id']+'" data-nama="'+data_json[x]['nama']+'" data-harga="'+data_json[x]['fharga']+'" title="Klik untuk menambahkan ke daftar pesanan !">&nearr;</button></td>';
+			d+='<td align="center"><button class="btn-mod-tambahkan" data-id="'+data_json[x]['id']+'" data-nama="'+data_json[x]['nama']+'" data-harga="'+data_json[x]['fharga']+'" data-kategori="'+data_json[x]['kategori_id']+'" title="Klik untuk menambahkan ke daftar pesanan !">&nearr;</button></td>';
 			d+='</tr>';			
 		    }
 		}else{
@@ -122,7 +124,7 @@ $.fn.showTableData=function(){
 		    d+='<td align="right">'+i+'&nbsp;</td>';
 		    d+='<td>'+data_json[x]['nama']+'</td>';
 		    d+='<td align="right">'+data_json[x]['fharga']+'</td>';
-		    d+='<td align="center"><button class="btn-mod-tambahkan" data-id="'+data_json[x]['id']+'" data-nama="'+data_json[x]['nama']+'" data-harga="'+data_json[x]['fharga']+'" title="Klik untuk menambahkan ke daftar pesanan !">&nearr;</button></td>';
+		    d+='<td align="center"><button class="btn-mod-tambahkan" data-id="'+data_json[x]['id']+'" data-nama="'+data_json[x]['nama']+'" data-harga="'+data_json[x]['fharga']+'" data-kategori="'+data_json[x]['kategori_id']+'" title="Klik untuk menambahkan ke daftar pesanan !">&nearr;</button></td>';
 		    d+='</tr>';
 		}
 	    }
@@ -135,7 +137,7 @@ $.fn.showTableData=function(){
 		    d+='<td align="right">'+i+'&nbsp;</td>';
 		    d+='<td>'+data_json[x]['nama']+'</td>';
 		    d+='<td align="right">'+data_json[x]['fharga']+'</td>';
-		    d+='<td align="center"><button class="btn-mod-tambahkan" data-id="'+data_json[x]['id']+'" data-nama="'+data_json[x]['nama']+'" data-harga="'+data_json[x]['fharga']+'" title="Klik untuk menambahkan ke daftar pesanan !">&nearr;</button></td>';
+		    d+='<td align="center"><button class="btn-mod-tambahkan" data-id="'+data_json[x]['id']+'" data-nama="'+data_json[x]['nama']+'" data-harga="'+data_json[x]['fharga']+'" data-kategori="'+data_json[x]['kategori_id']+'" title="Klik untuk menambahkan ke daftar pesanan !">&nearr;</button></td>';
 		    d+='</tr>';			
 		}
 	    }else{
@@ -144,7 +146,7 @@ $.fn.showTableData=function(){
 		d+='<td align="right">'+i+'&nbsp;</td>';
 		d+='<td>'+data_json[x]['nama']+'</td>';
 		d+='<td align="right">'+data_json[x]['fharga']+'</td>';
-		d+='<td align="center"><button class="btn-mod-tambahkan" data-id="'+data_json[x]['id']+'" data-nama="'+data_json[x]['nama']+'" data-harga="'+data_json[x]['fharga']+'" title="Klik untuk menambahkan ke daftar pesanan !">&nearr;</button></td>';
+		d+='<td align="center"><button class="btn-mod-tambahkan" data-id="'+data_json[x]['id']+'" data-nama="'+data_json[x]['nama']+'" data-harga="'+data_json[x]['fharga']+'" data-kategori="'+data_json[x]['kategori_id']+'" title="Klik untuk menambahkan ke daftar pesanan !">&nearr;</button></td>';
 		d+='</tr>';
 	    }
 	}
@@ -226,6 +228,7 @@ $('#id_tbody_menu').on('click','.btn-mod-tambahkan',function(){
     let tnama=$(this).attr('data-nama');
     let tharga=$(this).attr('data-harga');
     let uuid=create_UUID();
+    let kategori=$(this).attr('data-kategori');
 
     if(data_dipilih.length>0){
 	let sama=0;
@@ -246,6 +249,7 @@ $('#id_tbody_menu').on('click','.btn-mod-tambahkan',function(){
 		'harga':tharga,
 		'jumlah':1,
 		'bungkus':0,
+		'kategori':kategori,
 	    });	    
 	}else{
 	    //console.log('ID '+tid+' exists !');
@@ -258,6 +262,7 @@ $('#id_tbody_menu').on('click','.btn-mod-tambahkan',function(){
 	    'harga':tharga,
 	    'jumlah':1,
 	    'bungkus':0,
+	    'kategori':kategori,
 	});
     }
 
