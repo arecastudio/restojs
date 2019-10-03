@@ -32,7 +32,9 @@ $(document).ready(function () {
 		    //console.table(dx);
 		    //console.log(resp);
 		    if(dx['status']=='success'){
-			window.location.replace(dx['url']);
+			//window.location.replace(dx['url']);//this will clear the PHP session
+			//window.location.assign(dx['url']);//will keep the PHP session
+			window.location.href=dx['url'];//will keep the PHP session
 		    }else{
 			$('#notif').html(dx['msg']);
 			$('#notif').show();
