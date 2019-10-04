@@ -4,7 +4,7 @@ const mod="pesan-meja";
 console.log(mod);
 
 const txnomor_meja=$('#txnomor-meja').val();
-const operator_name='operatordummy';
+const operator_name=$('#txoperator').val();
 var data_dipilih=[];
 var data_dibungkus=[];
 var data_json=[];
@@ -48,15 +48,16 @@ $('#btn-kirim-pesanan').on('click',function(){
 	//contentType: 'multipart/form-data',
 	success:function(resp){
 	    console.log('hasil dari server');
-	    //let dx=JSON.parse(resp);	    
-	    //console.table(dx);
+	    let dx=JSON.parse(resp);	    
+	    console.table(dx);
 	    console.log(resp);
-	    /*if(dx['status']=='success'){
+	    if(dx['error']=='0'){
 		window.location.replace(dx['url']);
 	    }else{
-		$('#notif').html(dx['msg']);
-		$('#notif').show();
-	    }*/
+		//$('#notif').html(dx['desc']);
+		//$('#notif').show();
+		console.log(dx['desc']);
+	    }
 	},
 	error:function(xhr,status,error){
 	    console.log('getting data error');
