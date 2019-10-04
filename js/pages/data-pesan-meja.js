@@ -49,7 +49,7 @@ $('#btn-kirim-pesanan').on('click',function(){
 	success:function(resp){
 	    console.log('hasil dari server');
 	    let dx=JSON.parse(resp);	    
-	    console.table(dx);
+	    //console.table(dx);
 	    console.log(resp);
 	    if(dx['error']=='0'){
 		window.location.replace(dx['url']);
