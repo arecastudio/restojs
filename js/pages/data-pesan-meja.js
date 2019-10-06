@@ -9,6 +9,8 @@ var data_dipilih=[];
 var data_dibungkus=[];
 var data_json=[];
 
+var home_url='http://localhost:8010/';
+
 //bof creadit
 //https://www.w3resource.com/javascript-exercises/javascript-math-exercise-23.php
 function create_UUID(){
@@ -21,6 +23,40 @@ function create_UUID(){
     return uuid;
 }
 //eof
+
+$("#dialog-success").dialog({
+    modal: true,
+    bgiframe: true,
+    resizable: false,
+    width: 400,
+    height: 300,
+    autoOpen: false,
+    close:function(){
+	window.location.replace(home_url);
+    },
+    buttons:{
+	'Cetak Rincian':function(){
+	    console.log('cetak struk OK !');
+	},
+	'Tutup':function(){
+	    $(this).dialog('close');
+	}
+    }
+});
+
+/*$.fn.updateDialogOption=function(theURL){
+    $('#dialog-success').dialog(
+	'option',
+	buttons,{
+	    'Cetak':function(){
+		console.log('cetak struk OK !');
+	    },
+	    'Tutup':function(){
+		$(this).dialog('close');
+	    }
+	}
+    );
+}*/
 
 $('#btn-kirim-pesanan').on('click',function(){
     let txnote=$('#txnote').val();
@@ -52,24 +88,45 @@ $('#btn-kirim-pesanan').on('click',function(){
 	    //console.table(dx);
 	    console.log(resp);
 	    if(dx['error']=='0'){
-		window.location.replace(dx['url']);
+		//window.location.replace(dx['url']);
+
+		let msgs=dx['desc'];
+		$('#msg-success').html(msgs);
+
+		home_url=dx['url']+'?ref=data-order';
+		
+		$('#dialog-success').dialog('open');
+		
+		$('#txnote').val('');
+		data_dipilih=[];
+		//$.fn.resetForms();
+		//$.fn.updatePesananTable();
+
+		
 	    }else{
 		//$('#notif').html(dx['desc']);
 		//$('#notif').show();
 		console.log(dx['desc']);
+
+		$('#txnote').val('');
+		data_dipilih=[];
+		$.fn.resetForms();
+		$.fn.updatePesananTable();
 	    }
 	},
 	error:function(xhr,status,error){
 	    console.log('getting data error');
+
+	    $('#txnote').val('');
+	    data_dipilih=[];
+	    $.fn.resetForms();
+	    $.fn.updatePesananTable();
 	}
     });
     
     //eof kirim data
 
-    $('#txnote').val('');
-    data_dipilih=[];
-    $.fn.resetForms();
-    $.fn.updatePesananTable();
+
     //tampilkan modal info bahwa proses berhasil lalu redirect
     //window.open('?ref=jual');
 });
