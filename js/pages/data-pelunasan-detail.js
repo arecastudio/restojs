@@ -18,8 +18,9 @@ $.fn.resetForms=function(){
 	processData:false,
 	//contentType: 'multipart/form-data',
         success:function(resp){
-	    console.log(resp);
-	    //let dx=JSON.parse(resp);
+	    //console.log(resp);
+	    let dx=JSON.parse(resp);
+	    console.table(dx);
         },
         error:function(xhr,status,error){
             console.log('getting data error');
