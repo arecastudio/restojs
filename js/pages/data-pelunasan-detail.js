@@ -21,6 +21,23 @@ $.fn.resetForms=function(){
 	    //console.log(resp);
 	    let dx=JSON.parse(resp);
 	    console.table(dx);
+
+	    let dt='',i=0;
+	    for(let d in dx){
+		i++;
+		dt+='<tr>';
+		//dt+='<td>'+dx[d]['produk_id']+'</td>';
+		dt+='<td>'+i+'</td>';
+		dt+='<td>'+dx[d]['nama']+'</td>';
+		dt+='<td>'+dx[d]['harga']+'</td>';
+		dt+='<td>'+dx[d]['jumlah']+'</td>';
+		dt+='<td>'+dx[d]['jumlah']+'</td>';
+		dt+='<td>'+dx[d]['bungkus']+'</td>';
+		dt+='<td>'+dx[d]['operator']+'</td>';
+		dt+='</tr>';
+	    }
+
+	    $('#id_tbody').html(dt);
         },
         error:function(xhr,status,error){
             console.log('getting data error');
