@@ -22,22 +22,33 @@ $.fn.resetForms=function(){
 	    let dx=JSON.parse(resp);
 	    console.table(dx);
 
-	    let dt='',i=0;
-	    for(let d in dx){
+	    let dt='',i=0,total=0,grandtotal=0;
+	    for(let d in dx['pesanan']){
 		i++;
 		dt+='<tr>';
-		//dt+='<td>'+dx[d]['produk_id']+'</td>';
-		dt+='<td>'+i+'</td>';
-		dt+='<td>'+dx[d]['nama']+'</td>';
-		dt+='<td>'+dx[d]['harga']+'</td>';
-		dt+='<td>'+dx[d]['jumlah']+'</td>';
-		dt+='<td>'+dx[d]['jumlah']+'</td>';
-		dt+='<td>'+dx[d]['bungkus']+'</td>';
-		dt+='<td>'+dx[d]['operator']+'</td>';
+		//dt+='<td>'+dx['pesanan'][d]['produk_id']+'</td>';
+		dt+='<td align="center">'+i+'</td>';
+		dt+='<td>'+dx['pesanan'][d]['nama']+'</td>';
+		dt+='<td align="right">'+dx['pesanan'][d]['harga']+'</td>';
+		dt+='<td align="right">'+dx['pesanan'][d]['jumlah']+'</td>';
+		total=parseInt(dx['pesanan'][d]['harga'])*parseInt(dx['pesanan'][d]['jumlah']);
+		grandtotal+=total;
+		dt+='<td align="right">'+total+'</td>';
+		if(dx['pesanan'][d]['bungkus']=='TIDAK'){
+		    bungkus='&times;';
+		}else{
+		    bungkus='&#10004;';
+		}
+		dt+='<td align="center">'+bungkus+'</td>';
+		//dt+='<td align="center">'+dx['pesanan'][d]['bungkus']+'</td>';
+		dt+='<td align="center">'+dx['pesanan'][d]['operator']+'</td>';
 		dt+='</tr>';
 	    }
 
 	    $('#id_tbody').html(dt);
+	    $('#id_txgtotal').html('Rp. '+grandtotal);
+	    $('#id_txbmeja').html('Rp. '+dx['tarif']);
+	    $('#id_txbilang').html(terbilang(grandtotal));
         },
         error:function(xhr,status,error){
             console.log('getting data error');
