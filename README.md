@@ -15,8 +15,8 @@ This application is an updated version to replace an old one I built several yea
 - [x] Master - Ketegori Menu
 - [x] Master - Pembayaran Non-Tunai
 - [x] Master - Menu Tambahan
-- [ ] Penjualan - Penjualan
-- [ ] Penjualan - Pemesanan
+- [x] Penjualan - Pemesanan
+- [ ] Penjualan - Pelunasan
 - [ ] Penjualan - Cetak Ulang
 - [ ] Penjualan - Cetak Ulang per Tanggal
 - [ ] Penjualan - Pemesanan Langsung
@@ -35,3 +35,4 @@ This application is an updated version to replace an old one I built several yea
 - [x] Pengaturan - Histori Batal
 - [ ] Pengaturan - Backup DB
 - [ ] Pengaturan - Ubah Order
+- [x] Login User
