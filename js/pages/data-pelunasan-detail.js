@@ -64,13 +64,15 @@ $.fn.resetForms=function(){
 		dt+='<td align="center">'+dx['pesanan'][d]['operator']+'</td>';
 		dt+='</tr>';
 	    }
+	    let just_total=grandtotal;
 
 	    grandtotal=grandtotal+parseInt(dx['tarif']);
 	    public_grand_total=grandtotal;	    
 
 	    $('#id_tbody').html(dt);
-	    $('#id_txgtotal').html('Rp. '+(grandtotal));
-	    $('#id_txbmeja').html('Rp. '+dx['tarif']);
+	    $('#id_txtotal').html(formatDesimal(just_total));
+	    $('#id_txgtotal').html(formatDesimal(grandtotal));
+	    $('#id_txbmeja').html(formatDesimal(dx['tarif']));
 	    $('#id_txbilang').html(terbilang(grandtotal));
 	    val=''+grandtotal;
 	    vals=formatDesimal(val);
