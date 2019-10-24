@@ -1,5 +1,6 @@
 const mod="data-pelunasan-detail";
 const txnomor_meja=$('#txnomor-meja').val();
+var public_grand_total=0;
 
 //$('.table-datax').DataTable();
 //$('#id_btnlunaskan').attr('disabled','true');
@@ -57,11 +58,13 @@ $.fn.resetForms=function(){
 	    }
 
 	    grandtotal=grandtotal+parseInt(dx['tarif']);
+	    public_grand_total=grandtotal;	    
 
 	    $('#id_tbody').html(dt);
 	    $('#id_txgtotal').html('Rp. '+(grandtotal));
 	    $('#id_txbmeja').html('Rp. '+dx['tarif']);
 	    $('#id_txbilang').html(terbilang(grandtotal));
+	    $('#id_kembali').html('-'+grandtotal)
         },
         error:function(xhr,status,error){
             console.log('getting data error');
@@ -86,6 +89,8 @@ $('#id_ctunai').on('click',function(){
 	$('#id_txtunai').attr('disabled','true');
 	$('#id_btnpastetunai').attr('disabled','true');	
     }
+
+    $('#id_kembali').trigger('DOMSubtreeModified');
 });
 
 $('#id_cnontunai').on('click',function(){
@@ -106,4 +111,50 @@ $('#id_cnontunai').on('click',function(){
 	$('#id_optbank').attr('disabled','true');
 	$('#id_btnpastenontunai').attr('disabled','true');
     }
+
+});
+
+
+$('#id_btnpastetunai').on('click',function(){
+    let ntun=$('#id_txnontunai').val().split(',').join('');
+    console.log(ntun);
+    let hasil=public_grand_total-parseInt(ntun);
+    $('#id_txtunai').val(hasil);
+    $('#id_txtunai').trigger('keyup');
+});
+
+$('#id_btnpastenontunai').on('click',function(){
+    let tun=$('#id_txtunai').val().split(',').join('');
+    console.log(tun);
+    let hasil=public_grand_total-parseInt(tun);
+    $('#id_txnontunai').val(hasil);
+    $('#id_txnontunai').trigger('keyup');
+});
+
+$('#id_txtunai').on('keyup',function(){
+    let val1=$(this).val().split(',').join('');
+    let val2=$('#id_txnontunai').val().split(',').join('');
+    let vals=parseInt(val1)+parseInt(val2);
+    let res=vals-public_grand_total;
+    console.log('nontunai: '+res);
+    $('#id_kembali').html(res);
+});
+
+$('#id_txnontunai').on('keyup',function(){
+    let val1=$(this).val().split(',').join('');
+    let val2=$('#id_txtunai').val().split(',').join('');
+    let vals=parseInt(val1)+parseInt(val2);
+    let res=vals-public_grand_total;
+    console.log('tunai: '+res);
+    $('#id_kembali').html(res);
+});
+
+$('#id_kembali').on('DOMSubtreeModified',function(){
+    let val=$('#id_kembali').text();
+    if(parseInt(val)>=0){
+	$('#id_btnlunaskan').removeAttr('disabled');
+    }else{
+	$('#id_btnlunaskan').attr('disabled','true');
+    }
+    console.log('lunaskan: '+val);
 });
