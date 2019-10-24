@@ -80,9 +80,11 @@ $('#id_ctunai').on('click',function(){
 
     if(_status==true){
 	$('#id_txtunai').removeAttr('disabled');
+	$('#id_btnpastetunai').removeAttr('disabled');
     }else{
 	$('#id_txtunai').val('0');
 	$('#id_txtunai').attr('disabled','true');
+	$('#id_btnpastetunai').attr('disabled','true');	
     }
 });
 
@@ -93,7 +95,8 @@ $('#id_cnontunai').on('click',function(){
     if(_status==true){
 	$('#id_txnontunai').removeAttr('disabled');
 	$('#id_txnoedc').removeAttr('disabled');
-	$('#id_optbank').removeAttr('disabled');
+	$('#id_optbank').removeAttr('disabled');	
+	$('#id_btnpastenontunai').removeAttr('disabled');
     }else{
 	$('#id_txnontunai').val('0');
 	$('#id_txnontunai').attr('disabled','true');
@@ -101,5 +104,6 @@ $('#id_cnontunai').on('click',function(){
 	$('#id_txnoedc').attr('disabled','true');
 	$('#id_optbank').val('');
 	$('#id_optbank').attr('disabled','true');
+	$('#id_btnpastenontunai').attr('disabled','true');
     }
 });
