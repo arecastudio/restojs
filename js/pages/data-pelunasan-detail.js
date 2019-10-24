@@ -90,7 +90,9 @@ $('#id_ctunai').on('click',function(){
 	$('#id_btnpastetunai').attr('disabled','true');	
     }
 
-    $('#id_kembali').trigger('DOMSubtreeModified');
+    $('#id_txtunai').trigger('keyup');
+    $.fn.updateKembali();
+    
 });
 
 $('#id_cnontunai').on('click',function(){
@@ -111,6 +113,9 @@ $('#id_cnontunai').on('click',function(){
 	$('#id_optbank').attr('disabled','true');
 	$('#id_btnpastenontunai').attr('disabled','true');
     }
+
+    $('#id_txnontunai').trigger('keyup');
+    $.fn.updateKembali();
 
 });
 
@@ -150,6 +155,11 @@ $('#id_txnontunai').on('keyup',function(){
 });
 
 $('#id_kembali').on('DOMSubtreeModified',function(){
+    $.fn.updateKembali();
+});
+
+
+$.fn.updateKembali=function(){
     let val=$('#id_kembali').text();
     if(parseInt(val)>=0){
 	$('#id_btnlunaskan').removeAttr('disabled');
@@ -157,4 +167,4 @@ $('#id_kembali').on('DOMSubtreeModified',function(){
 	$('#id_btnlunaskan').attr('disabled','true');
     }
     console.log('lunaskan: '+val);
-});
+}
