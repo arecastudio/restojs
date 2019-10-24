@@ -6,6 +6,14 @@ var public_grand_total=0;
 //$('#id_btnlunaskan').attr('disabled','true');
 //$('#id_btnlunaskan').removeAttr('disabled');
 
+function formatDesimal(nilai){
+    nilai+='';
+    let val=nilai.split(',').join();
+
+    vals=val.replace(new RegExp(/\B(?=(\d{3})+(?!\d))/g),",");
+    return vals;
+}
+
 $.fn.resetForms=function(){
     let fdata=new FormData();
     fdata.append('mod',mod);
@@ -41,11 +49,11 @@ $.fn.resetForms=function(){
 		//dt+='<td>'+dx['pesanan'][d]['produk_id']+'</td>';
 		dt+='<td align="center">'+i+'</td>';
 		dt+='<td>'+dx['pesanan'][d]['nama']+'</td>';
-		dt+='<td align="right">'+dx['pesanan'][d]['harga']+'</td>';
+		dt+='<td align="right">'+formatDesimal(dx['pesanan'][d]['harga'])+'</td>';
 		dt+='<td align="right">'+dx['pesanan'][d]['jumlah']+'</td>';
 		total=parseInt(dx['pesanan'][d]['harga'])*parseInt(dx['pesanan'][d]['jumlah']);
 		grandtotal+=total;
-		dt+='<td align="right">'+total+'</td>';
+		dt+='<td align="right">'+formatDesimal(total)+'</td>';
 		if(dx['pesanan'][d]['bungkus']=='TIDAK'){
 		    bungkus='&times;';
 		}else{
@@ -64,7 +72,9 @@ $.fn.resetForms=function(){
 	    $('#id_txgtotal').html('Rp. '+(grandtotal));
 	    $('#id_txbmeja').html('Rp. '+dx['tarif']);
 	    $('#id_txbilang').html(terbilang(grandtotal));
-	    $('#id_kembali').html('-'+grandtotal)
+	    val=''+grandtotal;
+	    vals=formatDesimal(val);
+	    $('#id_kembali').html('-'+vals)
         },
         error:function(xhr,status,error){
             console.log('getting data error');
@@ -142,7 +152,9 @@ $('#id_txtunai').on('keyup',function(){
     let vals=parseInt(val1)+parseInt(val2);
     let res=vals-public_grand_total;
     console.log('nontunai: '+res);
-    $('#id_kembali').html(res);
+    val=''+res;
+    vals=formatDesimal(val);
+    $('#id_kembali').html(vals);
 });
 
 $('#id_txnontunai').on('keyup',function(){
@@ -151,7 +163,9 @@ $('#id_txnontunai').on('keyup',function(){
     let vals=parseInt(val1)+parseInt(val2);
     let res=vals-public_grand_total;
     console.log('tunai: '+res);
-    $('#id_kembali').html(res);
+    val=''+res;
+    vals=formatDesimal(val);
+    $('#id_kembali').html(vals);
 });
 
 $('#id_kembali').on('DOMSubtreeModified',function(){
@@ -160,11 +174,23 @@ $('#id_kembali').on('DOMSubtreeModified',function(){
 
 
 $.fn.updateKembali=function(){
-    let val=$('#id_kembali').text();
+    let val=$('#id_kembali').text().split(',').join('');
     if(parseInt(val)>=0){
 	$('#id_btnlunaskan').removeAttr('disabled');
     }else{
 	$('#id_btnlunaskan').attr('disabled','true');
     }
-    console.log('lunaskan: '+val);
+
+    //val='2000';
+
+    //vals=val.replace(new RegExp(/\B(?=(\d{3})+(?!\d))/g),",");
+    //console.log('lunaskan: '+vals);    
 }
+
+$('#id_btnlunaskan').on('click',function(){
+    let total=''+public_grand_total;
+    //vals=total.replace(new RegExp(/\B(?=(\d{3})+(?!\d))/g),",");
+    vals=formatDesimal(total);
+    console.log('button lunaskan clicked: '+vals);
+    //console.log('test fungsi: '+formatDesimal('2500000'));
+});
