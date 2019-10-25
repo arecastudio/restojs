@@ -1,0 +1,47 @@
+<div class="judul-frame">
+  <strong>Pesanan Per Meja</strong>
+</div>
+
+
+<form method="post" action="">
+  <div>
+    <fieldset style="border:solid 1px #cccccc;">
+      Urutkan Order/Pesanan berdasarkan
+      &nbsp;
+      &nbsp;
+      &nbsp;
+      &nbsp;
+      <select name="optacuan" id="optacuan">
+	<option value="jam">Jam</option>
+	<option value="menu">Menu</option>
+	<option value="meja">Meja</option>
+	<option value="jumlah">Jumlah</option>
+      </select>
+      &nbsp;
+      &nbsp;
+      &nbsp;
+      &nbsp;
+      <input type="submit" name="submit" value="Semua">
+      <input type="submit" name="submit1" value="Sedang Proses">
+      <input type="submit" name="submit2" value="Telah Siap">
+    </fieldset>
+  </div>
+</form>
+
+<div class="data-view">
+  <table border="0" class="table-data">
+    <thead>
+      <tr>
+        <th>#</th>
+        <th>Nama Item</th>
+        <th>Jumlah</th>
+        <th>Meja</th>
+        <th>Jam Pesan</th>
+        <th>Jam Siap</th>
+      </tr>
+    </thead>
+    <tbody id="id_tbody">
+    </tbody>
+  </table>
+</div>
+<div id="id-notice-content">hahah</div>      

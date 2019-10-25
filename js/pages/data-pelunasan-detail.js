@@ -1,6 +1,7 @@
 const mod="data-pelunasan-detail";
 const txnomor_meja=$('#txnomor-meja').val();
 var public_grand_total=0;
+var home_url='http://localhost:8010/';
 
 //$('.table-datax').DataTable();
 //$('#id_btnlunaskan').attr('disabled','true');
@@ -13,6 +14,26 @@ function formatDesimal(nilai){
     vals=val.replace(new RegExp(/\B(?=(\d{3})+(?!\d))/g),",");
     return vals;
 }
+
+$("#dialog-success").dialog({
+    modal: true,
+    bgiframe: true,
+    resizable: false,
+    width: 400,
+    height: 300,
+    autoOpen: false,
+    close:function(){
+	window.location.replace(home_url);
+    },
+    buttons:{
+	'Re-print Struk':function(){
+	    console.log('cetak struk OK !');
+	},
+	'Tutup':function(){
+	    $(this).dialog('close');
+	}
+    }
+});
 
 $.fn.resetForms=function(){
     let fdata=new FormData();
@@ -61,13 +82,14 @@ $.fn.resetForms=function(){
 		}
 		dt+='<td align="center">'+bungkus+'</td>';
 		//dt+='<td align="center">'+dx['pesanan'][d]['bungkus']+'</td>';
-		dt+='<td align="center">'+dx['pesanan'][d]['operator']+'</td>';
+		dt+='<td align="center">'+dx['pesanan'][d]['siap']+'</td>';
 		dt+='</tr>';
 	    }
 	    let just_total=grandtotal;
 
 	    grandtotal=grandtotal+parseInt(dx['tarif']);
-	    public_grand_total=grandtotal;	    
+	    public_grand_total=grandtotal;
+	    home_url=dx['url']+'?ref=payment';
 
 	    $('#id_tbody').html(dt);
 	    $('#id_txtotal').html(formatDesimal(just_total));
@@ -195,4 +217,6 @@ $('#id_btnlunaskan').on('click',function(){
     vals=formatDesimal(total);
     console.log('button lunaskan clicked: '+vals);
     //console.log('test fungsi: '+formatDesimal('2500000'));
+
+    $('#dialog-success').dialog('open');
 });
