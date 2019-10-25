@@ -1,6 +1,7 @@
 const mod="data-pelunasan-detail";
 const txnomor_meja=$('#txnomor-meja').val();
 var public_grand_total=0;
+//var public_kembali=0;
 var home_url='http://localhost:8010/';
 
 //$('.table-datax').DataTable();
@@ -57,7 +58,7 @@ $.fn.resetForms=function(){
 	    let ed='',j=0;
 	    for(let e in dx['edc']){
 		j++;
-		ed+='<option value="'+dx['edc'][e]['id']+'">';
+		ed+='<option value="'+dx['edc'][e]['nama']+'">';
 		ed+=dx['edc'][e]['nama'];
 		ed+='</option>';
 	    }
@@ -218,5 +219,53 @@ $('#id_btnlunaskan').on('click',function(){
     console.log('button lunaskan clicked: '+vals);
     //console.log('test fungsi: '+formatDesimal('2500000'));
 
-    $('#dialog-success').dialog('open');
+
+    let fdata=new FormData();
+    fdata.append('mod',mod);
+    fdata.append('act','pay');
+    fdata.append('meja',txnomor_meja);
+    fdata.append('biaya_meja',$('#id_txbmeja').text());
+    fdata.append('tunai',$('#id_txtunai').val());
+    fdata.append('nontunai',$('#id_txnontunai').val());
+    fdata.append('bank',$('#id_optbank').val());
+    fdata.append('edc',$('#id_txnoedc').val());
+    fdata.append('grandtotal',public_grand_total);
+    fdata.append('kembali',$('#id_kembali').text());
+
+    $.ajax({
+	url:'backend/?',
+	method:'POST',
+	data:fdata,
+	contentType:false,
+	cache:false,
+	processData:false,
+	//contentType: 'multipart/form-data',
+	success:function(resp){
+	    console.log('hasil dari server '+resp);
+	    let dx=JSON.parse(resp);	    
+	    //console.table(dx);
+	    console.log(resp);
+	    if(dx['error']=='0'){
+		//window.location.replace(dx['url']);
+
+		let msgs=dx['desc'];
+		$('#msg-success').html(msgs);
+		
+		$('#dialog-success').dialog('open');
+
+		
+	    }else{
+		console.log(dx['desc']);
+	    }
+	},
+	error:function(xhr,status,error){
+	    console.log('getting data error');
+
+	    //$('#txnote').val('');	    
+	    //$.fn.resetForms();	    
+	}
+    });
+    
+
+    //$('#dialog-success').dialog('open');
 });

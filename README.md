@@ -19,7 +19,7 @@ This application is an updated version to replace an old one I built several yea
 - [ ] Penjualan - Pelunasan
 - [ ] Penjualan - Cetak Ulang
 - [ ] Penjualan - Cetak Ulang per Tanggal
-- [ ] Penjualan - Pemesanan Langsung
+- [x] Penjualan - Pemesanan Langsung
 - [ ] Dapur - Pemesanan per Meja
 - [ ] Dapur - Antrian Dapur
 - [ ] Tool - Pindah Meja
