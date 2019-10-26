@@ -25,6 +25,7 @@ This application is an updated version to replace an old one I built several yea
 - [x] Tool - Batal Meja
 - [x] Tool - Batal Pelunasan
 - [ ] Tool - Ubah Pesanan
+- [ ] Tool - Singkronisasi Pembayaran
 - [x] Laporan - Pemasukan Hari Ini
 - [x] Laporan - Laporan Bulanan
 - [x] Laporan - Laporan Pajak
@@ -32,6 +33,5 @@ This application is an updated version to replace an old one I built several yea
 - [ ] Pengaturan - Hak Akses
 - [x] Pengaturan - Biaya Lain
 - [x] Pengaturan - Histori Batal
-- [ ] Pengaturan - Backup DB
 - [ ] Pengaturan - Ubah Order
 - [x] Login User
