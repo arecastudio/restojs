@@ -36,6 +36,7 @@ $('#id_btn_show').on('click',function(){
 	success:function(resp){
 	    let dx=JSON.parse(resp);
 	    //console.table(dx);
+	    //console.log(resp);
 
 	    let i=0,td='';
 	    for(let x in dx){

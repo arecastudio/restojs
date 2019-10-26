@@ -33,5 +33,5 @@ This application is an updated version to replace an old one I built several yea
 - [ ] Pengaturan - Hak Akses
 - [x] Pengaturan - Biaya Lain
 - [x] Pengaturan - Histori Batal
-- [ ] Pengaturan - Ubah Order
+- [x] Pengaturan - Ubah Order
 - [x] Login User
