@@ -22,7 +22,6 @@ This application is an updated version to replace an old one I built several yea
 - [x] Penjualan - Pemesanan Langsung
 - [ ] Dapur - Pemesanan per Meja
 - [ ] Dapur - Antrian Dapur
-- [ ] Tool - Pindah Meja
 - [ ] Tool - Batal Meja
 - [x] Tool - Batal Pelunasan
 - [ ] Tool - Ubah Pesanan
