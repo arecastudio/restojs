@@ -20,8 +20,8 @@ This application is an updated version to replace an old one I built several yea
 - [ ] Penjualan - Cetak Ulang
 - [ ] Penjualan - Cetak Ulang per Tanggal
 - [x] Penjualan - Pemesanan Langsung
-- [ ] Dapur - Pemesanan per Meja
-- [ ] Dapur - Antrian Dapur
+- [x] Dapur - Status Pemesanan
+- [x] Dapur - Antrian Dapur
 - [ ] Tool - Batal Meja
 - [x] Tool - Batal Pelunasan
 - [ ] Tool - Ubah Pesanan

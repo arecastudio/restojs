@@ -3,7 +3,7 @@
 </div>
 
 
-<form method="post" action="">
+<!--form method="post" action="">
   <div>
     <fieldset style="border:solid 1px #cccccc;">
       Urutkan Order/Pesanan berdasarkan
@@ -26,7 +26,7 @@
       <input type="submit" name="submit2" value="Telah Siap">
     </fieldset>
   </div>
-</form>
+</form-->
 
 <div class="data-view">
   <table border="0" class="table-data">
@@ -37,14 +37,32 @@
         <th>Nama Item</th>
         <th>Jumlah</th>        
         <th>Jam Pesan</th>
-        <th>Jam Siap</th>
+        <th>Bungkus</th>
+	<th>Stat Siap</th>	
+	<th>Ubah Status</th>
       </tr>
     </thead>
     <tbody id="id_tbody">
     </tbody>
   </table>
 </div>
-<div id="id-notice-content">hahah</div>      
+<div id="id-notice-content">hahah</div>
+
+
+<div id="dialog-edit" title="Edit Data">
+    <div>Ubah Status Pesanan. Ketika Status pesanan diubah menjadi SDH, maka akan hilang dari daftar pesanan dapur. Yang artinya pesanan sudah disampaikan ke pelanggan.</div>
+    <hr/>
+    <form autocomplete="off" class="form-input" id="form-edit">
+	<div class="elementry">
+	    <label for="optsiap_edit">Status SIAP</label>
+	    <select id="optsiap_edit" class="">
+	      <!--option value="">Pilih</option-->
+	      <option value="SDH">SUDAH</option>
+	      <option value="BLM">BELUM</option>
+	    </select>
+	</div>	
+    </form>
+</div>
 
 
 <script src="js/pages/pesan-dapur-list.js"></script>
