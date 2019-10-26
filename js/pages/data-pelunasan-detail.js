@@ -1,7 +1,7 @@
 const mod="data-pelunasan-detail";
 const txnomor_meja=$('#txnomor-meja').val();
 var public_grand_total=0;
-//var public_kembali=0;
+var public_data_pesan=[];
 var home_url='http://localhost:8010/';
 
 //$('.table-datax').DataTable();
@@ -64,8 +64,24 @@ $.fn.resetForms=function(){
 	    }
 	    $('#id_optbank').append(ed);
 
+	    //public_data_pesan=dx['pesanan'];
 	    let dt='',i=0,total=0,grandtotal=0;
 	    for(let d in dx['pesanan']){
+		public_data_pesan.push({
+		    'pesanan_id':dx['pesanan'][d]['pesanan_id'],
+                    'produk_id':dx['pesanan'][d]['produk_id'],
+                    'nama':dx['pesanan'][d]['nama'],
+                    'harga':dx['pesanan'][d]['harga'],
+                    'kategori_id':dx['pesanan'][d]['karegori_id'],
+                    'jumlah':dx['pesanan'][d]['jumlah'],
+                    'waktu':dx['pesanan'][d]['waktu'],
+                    'operator':dx['pesanan'][d]['operator'],
+                    'bungkus':dx['pesanan'][d]['bungkus'],
+                    'batal':dx['pesanan'][d]['batal'],
+                    'status':dx['pesanan'][d]['status'],
+                    'siap':dx['pesanan'][d]['siap'],
+                    'waktu_siap':dx['pesanan'][d]['waktu_siap'],
+		});
 		i++;
 		dt+='<tr>';
 		//dt+='<td>'+dx['pesanan'][d]['produk_id']+'</td>';
@@ -216,13 +232,15 @@ $('#id_btnlunaskan').on('click',function(){
     let total=''+public_grand_total;
     //vals=total.replace(new RegExp(/\B(?=(\d{3})+(?!\d))/g),",");
     vals=formatDesimal(total);
-    console.log('button lunaskan clicked: '+vals);
+    console.log('button lunaskan clicked: '+vals+', arraylength: '+public_data_pesan.length);
     //console.log('test fungsi: '+formatDesimal('2500000'));
 
 
+    let datax=JSON.stringify(public_data_pesan);
     let fdata=new FormData();
     fdata.append('mod',mod);
     fdata.append('act','pay');
+    fdata.append('data',datax);
     fdata.append('meja',txnomor_meja);
     fdata.append('biaya_meja',$('#id_txbmeja').text());
     fdata.append('tunai',$('#id_txtunai').val());
