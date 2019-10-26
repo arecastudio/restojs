@@ -25,7 +25,7 @@ This application is an updated version to replace an old one I built several yea
 - [x] Tool - Batal Meja
 - [x] Tool - Batal Pelunasan
 - [ ] Tool - Ubah Pesanan
-- [ ] Tool - Singkronisasi Pembayaran
+- [x] Tool - Singkronisasi Pembayaran
 - [x] Laporan - Pemasukan Hari Ini
 - [x] Laporan - Laporan Bulanan
 - [x] Laporan - Laporan Pajak
