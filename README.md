@@ -8,7 +8,7 @@ This application is an updated version to replace an old one I built several yea
 
 ## TODO
 ### Detail Progress of Each Frontend Modules
-- [ ] Beranda 
+- [x] Beranda 
 - [x] Master - Data Meja
 - [x] Master - Kategori Meja
 - [x] Master - Daftar Menu
@@ -16,7 +16,7 @@ This application is an updated version to replace an old one I built several yea
 - [x] Master - Pembayaran Non-Tunai
 - [x] Master - Menu Tambahan
 - [x] Penjualan - Pemesanan
-- [ ] Penjualan - Pelunasan
+- [x] Penjualan - Pelunasan
 - [ ] Penjualan - Cetak Ulang
 - [ ] Penjualan - Cetak Ulang per Tanggal
 - [x] Penjualan - Pemesanan Langsung
