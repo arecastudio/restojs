@@ -159,6 +159,10 @@ body{
     text-align:right;
 }
 
+.txbold{
+    font-weight:bold;
+}
+
 .table-data{
     width:100%;
     border-collapse:collapse;
@@ -245,3 +249,26 @@ body{
     margin-top:10px;
     margin-bottom:30px;
 }
+
+/* BOF sub menu hak akses*/
+.sub-menu-role{
+	width: 150px;
+	height: 300px;
+	border: dotted 1px #ccf;
+	border-radius: 2px;
+	float: left;
+	background-color: #fff;
+	margin: 5px;color: #000;
+	padding: 10px;
+}
+.sub-menu-role img{
+	width: 100px;
+	height: 100px;
+}
+.sub-menu-role input[type=checkbox]{
+	margin-bottom: 15px;
+}
+.sub-menu-role:hover{
+	background-color: #ffb;
+}
+/* EOF sub menu hak akses*/

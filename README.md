@@ -24,7 +24,7 @@ This application is an updated version to replace an old one I built several yea
 - [ ] Dapur - Antrian Dapur
 - [ ] Tool - Pindah Meja
 - [ ] Tool - Batal Meja
-- [ ] Tool - Batal Pelunasan
+- [x] Tool - Batal Pelunasan
 - [ ] Tool - Ubah Pesanan
 - [x] Laporan - Pemasukan Hari Ini
 - [x] Laporan - Laporan Bulanan
