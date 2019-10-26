@@ -22,7 +22,7 @@ This application is an updated version to replace an old one I built several yea
 - [x] Penjualan - Pemesanan Langsung
 - [x] Dapur - Status Pemesanan
 - [x] Dapur - Antrian Dapur
-- [ ] Tool - Batal Meja
+- [x] Tool - Batal Meja
 - [x] Tool - Batal Pelunasan
 - [ ] Tool - Ubah Pesanan
 - [x] Laporan - Pemasukan Hari Ini
