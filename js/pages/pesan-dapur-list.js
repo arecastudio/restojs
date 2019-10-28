@@ -33,7 +33,11 @@ $.fn.resetForms=function(){
 		td+='<td>'+dx[x]['jumlah']+'</td>';		
 		td+='<td>'+dx[x]['jam']+'</td>';
 		td+='<td class="txcenter">'+dx[x]['bungkus']+'</td>';
-		td+='<td>'+dx[x]['status_siap']+'</td>';
+		if(dx[x]['status_siap']=='SDH'){
+		    td+='<td class="txsudah">'+dx[x]['status_siap']+'</td>';
+		}else{
+		    td+='<td class="txbelum">'+dx[x]['status_siap']+'</td>';
+		}		
 		td+='<td class="txcenter"><button class="btnubah" title="Ubah status" data-produkid="'+dx[x]['id']+'" data-pesananid="'+dx[x]['pesanan_id']+'" data-meja="'+dx[x]['meja']+'" data-bungkus="'+dx[x]['bungkus']+'">&#8630;</button></td>';
 		td+='</tr>';
 	    }

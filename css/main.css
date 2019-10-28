@@ -272,3 +272,14 @@ body{
 	background-color: #ffb;
 }
 /* EOF sub menu hak akses*/
+
+
+.txbelum{
+    color:red;
+    font-weight:bold;
+}
+
+.txsudah{
+    color:green;
+    font-weight:bold;
+}

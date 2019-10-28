@@ -1,5 +1,13 @@
 const mod="laporan-bulanan";
 
+function formatDesimal(nilai){
+    nilai+='';
+    let val=nilai.split(',').join();
+
+    vals=val.replace(new RegExp(/\B(?=(\d{3})+(?!\d))/g),",");
+    return vals;
+}
+
 $('.txtanggal').datepicker();
 $('.txtanggal').datepicker('option','dateFormat','yy-mm-dd');
 
@@ -10,6 +18,7 @@ $('#box-chart').hide();
 $('#btn-show').on('click',function(){
     let jenis=$("input:radio[name=radio-type]:checked").val();
     //console.log('Jenisnya: '+jenis);
+    $('#id_grandtotal').text('0');
 
     $('#notifikasi').show();
     //$('#box-chart').hide();
@@ -207,7 +216,7 @@ $('#btn-show').on('click',function(){
 	    $('#id_tbody').html(td);
 
 
-	    td='';i=0;
+	    td='';i=0,grandtotal=0;
 	    for(let x in dx['data_rekap']){
 		i++;
 		td+='';
@@ -222,8 +231,10 @@ $('#btn-show').on('click',function(){
 		td+='<td align="right">'+dx['data_rekap'][x]['diskon']+'&nbsp;%</td>';
 		td+='<td align="right">'+dx['data_rekap'][x]['ftarif_meja']+'</td>';
 		td+='<td align="right">'+dx['data_rekap'][x]['fgtotal']+'</td>';
+		grandtotal+=parseInt(dx['data_rekap'][x]['gtotal']);
 	    }
 	    $('#id_tbody_rekap').html(td);
+	    $('#id_grandtotal').text(formatDesimal(grandtotal));
 
 	    //tbody_daily
 	    //console.table(dx['data_harian']);

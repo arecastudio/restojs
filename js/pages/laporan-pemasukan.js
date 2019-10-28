@@ -7,6 +7,7 @@ const tanggal='2018-12-20';
 $.fn.resetForms=function(){
     console.log(tanggal);
     //$('#sp_tanggal').html(tanggal);
+    $('#id_grandtotal').text('0');
 
     $.ajax({
 	url:'backend/?data='+mod,
@@ -201,6 +202,7 @@ $.fn.resetForms=function(){
 
 
 	    td='';i=0;
+	    let grandtotal=0;
 	    for(let x in dx['data_rekap']){
 		i++;
 		td+='';
@@ -215,8 +217,10 @@ $.fn.resetForms=function(){
 		td+='<td align="right">'+dx['data_rekap'][x]['diskon']+'&nbsp;%</td>';
 		td+='<td align="right">'+dx['data_rekap'][x]['ftarif_meja']+'</td>';
 		td+='<td align="right">'+dx['data_rekap'][x]['fgtotal']+'</td>';
+		grandtotal+=parseInt(dx['data_rekap'][x]['gtotal']);
 	    }
 	    $('#id_tbody_rekap').html(td);
+	    $('#id_grandtotal').text(formatDesimal(grandtotal));
 	    
 	},
 	error:function(xhr,status,error){
