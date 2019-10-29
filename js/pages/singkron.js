@@ -1,6 +1,20 @@
 const mod='singkron';
 console.log(mod);
 
+$.fn.resetForms=function(){
+    $.ajax({
+        url:'backend/?data='+mod,
+	method:'GET',
+	success:function(resp){
+	    console.log(resp);
+	    let dx=JSON.parse(resp);	    
+	},
+	error:function(xhr,status,error){
+	    console.log('getting data error');
+	}
+    });
+}
+
 $("#dialog-delete").dialog({
     modal: true,
     bgiframe: true,
@@ -9,6 +23,8 @@ $("#dialog-delete").dialog({
     height: 300,
     autoOpen: false
 });
+
+$.fn.resetForms();
 
 
 $('#id_btnproses').on('click',function(){
