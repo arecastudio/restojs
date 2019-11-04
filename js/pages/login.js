@@ -1,6 +1,25 @@
 $(document).ready(function () {
     const mod="login-user";
     $('#notif').hide();
+
+    $('#id_username').focus();
+
+    $('#id_username').on("keypress", function(e) {
+        if (e.keyCode == 13) {
+            //alert("Enter pressed");
+	    $('#id_password').focus();
+            return false; // prevent the button click from happening
+        }
+    });
+
+    $('#id_password').on("keypress", function(e) {
+        if (e.keyCode == 13) {
+            //alert("Enter pressed");
+	    $('#id_btnlogin').trigger('click');
+            return false; // prevent the button click from happening
+        }
+    });
+    
     
     $('#id_btnlogin').on('click',function(){
 	//console.log(mod);

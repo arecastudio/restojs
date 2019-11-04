@@ -79,8 +79,7 @@ $('#btn-mod-edit').on('click',function(){
 		    console.log('message: '+resp);
 		    $.fn.resetForms();
 		    $('#id-notice-content').html(resp);
-		    $('#id-notice-content').show();
-		    
+		    $('#id-notice-content').show();		    
 		},
 		error:function(xhr,status,error){
 		    console.log('getting data error');

@@ -106,6 +106,13 @@ $.fn.resetForms=function(){
 
 	    grandtotal=grandtotal+parseInt(dx['tarif']);
 	    public_grand_total=grandtotal;
+
+	    if(grandtotal>=500000){
+		$('#id_chkpotensial').attr('checked','checked');
+	    }else{
+		$('#id_chkpotensial').removeAttr('checked');
+	    }
+	    
 	    home_url=dx['url']+'?ref=payment';
 
 	    $('#id_tbody').html(dt);
@@ -230,9 +237,14 @@ $.fn.updateKembali=function(){
 
 $('#id_btnlunaskan').on('click',function(){
     let total=''+public_grand_total;
+    let p_status=$('#id_chkpotensial').is(':checked');
+    let potensial=0;
+    if(p_status==true){
+	potensial=1;
+    }
     //vals=total.replace(new RegExp(/\B(?=(\d{3})+(?!\d))/g),",");
     vals=formatDesimal(total);
-    console.log('button lunaskan clicked: '+vals+', arraylength: '+public_data_pesan.length);
+    console.log('button lunaskan clicked: '+vals+', arraylength: '+public_data_pesan.length+', potensial: '+p_status);
     //console.log('test fungsi: '+formatDesimal('2500000'));
 
 
@@ -249,6 +261,7 @@ $('#id_btnlunaskan').on('click',function(){
     fdata.append('edc',$('#id_txnoedc').val());
     fdata.append('grandtotal',public_grand_total);
     fdata.append('kembali',$('#id_kembali').text());
+    fdata.append('potensial',potensial);
 
     $.ajax({
 	url:'backend/?',
