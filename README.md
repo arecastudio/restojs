@@ -30,7 +30,7 @@ This application is an updated version to replace an old one I built several yea
 - [x] Laporan - Laporan Bulanan
 - [x] Laporan - Laporan Pajak
 - [x] Pengaturan - Data Pengguna
-- [ ] Pengaturan - Hak Akses
+- [x] Pengaturan - Hak Akses
 - [x] Pengaturan - Biaya Lain
 - [x] Pengaturan - Histori Batal
 - [x] Pengaturan - Ubah Order
