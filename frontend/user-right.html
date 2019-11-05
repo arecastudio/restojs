@@ -3,7 +3,7 @@
 </div>
 
 <div style="margin-top:5px;margin-bottom:5px;">
-	<form id="f1" action="" method="post">
+	<form id="f1">
 		<select id="optid" name="optid">
 			<option value="">Jenis Pengguna</option>
 		</select>&nbsp;&nbsp;&nbsp;
@@ -22,37 +22,51 @@
 				<input type="hidden" name="hid_id" id="hid_id"/>
 				<div class="sub-menu-role">
 					<h3>Master</h3>
-					<input type="checkbox" name="chk_master_data_meja" id="chk_master_data_meja"/> Data Meja<br/>
-					<input type="checkbox" name="chk_master_kategori_meja" id="chk_master_kategori_meja"/> Kategori Meja<br/>
-					<input type="checkbox" name="chk_master_daftar_menu" id="chk_master_daftar_menu"/> Daftar menu<br/>
-					<input type="checkbox" name="chk_master_kategori_menu" id="chk_master_kategori_menu"/> Kategori Menu<br/>
-					<input type="checkbox" name="chk_master_daftar_menu_tambahan" id="chk_master_daftar_menu_tambahan"/> Daftar menu Tambahan<br/>
+					<input type="checkbox" class="chkrole" id="id_chk_master_data_meja" />&nbsp; Data Meja
+					<input type="checkbox" class="chkrole" id="id_chk_master_kategori_meja" />&nbsp; Kategori Meja
+					<input type="checkbox" class="chkrole" id="id_chk_master_daftar_menu" />&nbsp; Daftar Menu
+					<input type="checkbox" class="chkrole" id="id_chk_master_kategori_menu" />&nbsp; Kategori Menu
+					<input type="checkbox" class="chkrole" id="id_chk_master_pembayaran_tunai" />&nbsp; Pembayaran Tunai
+					<input type="checkbox" class="chkrole" id="id_chk_master_menu_tambahan" />&nbsp; Menu Tambahan
 				</div>
 
 				<div class="sub-menu-role">
-					<h3>Penjualan</h3>
-					<input type="checkbox" name="chk_penjualan_pemesanan" id="chk_penjualan_pemesanan"/> Pemesanan<br/>
-					<input type="checkbox" name="chk_penjualan_pelunasan" id="chk_penjualan_pelunasan"/> Pelunasan<br/>
+				  <h3>Penjualan</h3>
+				  <input type="checkbox" class="chkrole" id="id_chk_penjualan_pemesanan" />&nbsp; Pemesanan
+				  <input type="checkbox" class="chkrole" id="id_chk_penjualan_pelunasan" />&nbsp; Pelunasan
+				  <input type="checkbox" class="chkrole" id="id_chk_penjualan_cetak_ulang_pelunasan" />&nbsp; Cetak Ulang Struk
+				  <input type="checkbox" class="chkrole" id="id_chk_penjualan_cetak_ulang_penusanan_tanggal" />&nbsp; Cetak Ulang Struk /Tanggal
+				  <input type="checkbox" class="chkrole" id="id_chk_penjualan_pemesanan_langsung" />&nbsp; Pemesanan Langsung
+				</div>
+
+				<div class="sub-menu-role">
+				  <h3>Dapur</h3>
+				  <input type="checkbox" class="chkrole" id="id_chk_dapur_status_pesanan" />&nbsp; Status Pesanan
+				  <input type="checkbox" class="chkrole" id="id_chk_dapur_antrian_dapur" />&nbsp; Antrian Dapur
 				</div>
 
 				<div class="sub-menu-role">
 					<h3>Tool</h3>
-					<input type="checkbox" name="chk_tool_pindah_meja" id="chk_tool_pindah_meja"/> Pindah Meja<br/>
-					<input type="checkbox" name="chk_tool_batalkan_meja" id="chk_tool_batalkan_meja"/> Batalkan Meja<br/>
-					<input type="checkbox" name="chk_tool_batalkan_pelunasan" id="chk_tool_batalkan_pelunasan"/> Batalkan Pelunasan<br/>
-					<input type="checkbox" name="chk_tool_ubah_pesanan" id="chk_tool_ubah_pesanan"/> Ubah Pesanan<br/>
+					<input type="checkbox" class="chkrole" id="id_chk_tool_batalkan_meja" />&nbsp; Batalkan Meja
+					<input type="checkbox" class="chkrole" id="id_chk_tool_batalkan_pelunasan" />&nbsp; Batalkan Pelunsan
+					<input type="checkbox" class="chkrole" id="id_chk_tool_ubah_pesanan" />&nbsp; Ubah Pesanan
+					<input type="checkbox" class="chkrole" id="id_chk_tool_singkronisasi" />&nbsp; Singkronisasi
 				</div>
 
 				<div class="sub-menu-role">
 					<h3>Laporan</h3>
-					<input type="checkbox" name="chk_laporan_harian" id="chk_laporan_harian"/> Harian & Bulanan<br/>
-					<input type="checkbox" name="chk_laporan_bulanan" id="chk_laporan_bulanan"/> Pemasuakan Hari Ini<br/>
-					<input type="checkbox" name="chk_laporan_import" id="chk_laporan_import"/> Import Laporan & Pajak<br/>
+					<input type="checkbox" class="chkrole" id="id_chk_laporan_pemasukan_terakhir" />&nbsp; Pemasukan Terakhir
+					<input type="checkbox" class="chkrole" id="id_chk_laporan_bulanan" />&nbsp; Laporan Bulanan
+					<input type="checkbox" class="chkrole" id="id_chk_laporan_pajak" />&nbsp; Laporan Pajak
 				</div>
 
 				<div class="sub-menu-role">
-					<h3>Pengaturan</h3>
-					<input type="checkbox" name="chk_pengaturan_biaya_lain2" id="chk_pengaturan_biaya_lain2"/> Biaya Lain-lain<br/>
+				  <h3>Pengaturan</h3>
+				  <input type="checkbox" class="chkrole" id="id_chk_pengaturan_data_pengguna" />&nbsp; Data Pengguna
+				  <input type="checkbox" class="chkrole" id="id_chk_pengaturan_hak_akses" />&nbsp; Hak Akses
+				  <input type="checkbox" class="chkrole" id="id_chk_pengaturan_biaya_lain" />&nbsp; Biaya Lain
+				  <input type="checkbox" class="chkrole" id="id_chk_pengaturan_histori_batal_meja" />&nbsp; History Batal Meja
+				  <input type="checkbox" class="chkrole" id="id_chk_pengaturan_ubah_order" />&nbsp; Ubah Pesanan
 				</div>
 
 			</div>

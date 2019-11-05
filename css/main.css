@@ -252,8 +252,8 @@ body{
 
 /* BOF sub menu hak akses*/
 .sub-menu-role{
-	width: 150px;
-	height: 300px;
+	width: 200px;
+	height: 350px;
 	border: dotted 1px #ccf;
 	border-radius: 2px;
 	float: left;
@@ -266,10 +266,11 @@ body{
 	height: 100px;
 }
 .sub-menu-role input[type=checkbox]{
-	margin-bottom: 15px;
+    margin-top: 18px;
+    display:block;
 }
 .sub-menu-role:hover{
-	background-color: #ffb;
+	background-color: #efefef;
 }
 /* EOF sub menu hak akses*/
 
