@@ -5,8 +5,8 @@ $("#dialog-edit").dialog({
     modal: true,
     bgiframe: true,
     resizable: false,
-    width: 600,
-    height: 400,
+    width: 700,
+    height: 500,
     autoOpen: false
 });
 
@@ -77,8 +77,8 @@ $('#id_tbody').on('click','.btnubah',function(){
 		td+='<td class="txcenter">'+dx[x]['jumlah']+'</td>';
 		td+='<td class="txcenter">'+dx[x]['harga']+'</td>';	
 		td+='<td class="txcenter">'+dx[x]['bungkus']+'</td>';
-		td+='<td class="txcenter"><button class="btndel" data-meja="'+dx[x]['meja']+'" >&times;</button>&nbsp;';
-		td+='<button class="btnmin" data-meja="'+dx[x]['meja']+'" >&minus;</button><td/>';
+		td+='<td class="txcenter"><button class="btndel" data-meja="'+dx[x]['meja']+'" data-id="'+dx[x]['id']+'" data-produk="'+dx[x]['produk_id']+'" data-bungkus="'+dx[x]['bungkus']+'" data-jumlah="'+dx[x]['jumlah']+'" >&times;</button>&nbsp;';
+		td+='<button class="btnmin" data-meja="'+dx[x]['meja']+'" data-id="'+dx[x]['id']+'" data-produk="'+dx[x]['produk_id']+'" data-bungkus="'+dx[x]['bungkus']+'" data-jumlah="'+dx[x]['jumlah']+'" >&minus;</button><td/>';
 		td+='</tr>';
 	    }
 
@@ -90,4 +90,89 @@ $('#id_tbody').on('click','.btnubah',function(){
 	}
     });
     //eof kirim data
+});
+
+
+$('#id_ubahtbody').on('click','.btndel',function(){
+    let meja=$(this).attr('data-meja');
+    let id=$(this).attr('data-id');
+    let produk=$(this).attr('data-produk');
+    let bungkus=$(this).attr('data-bungkus');
+    
+    let fdata=new FormData();
+    fdata.append('mod',mod);
+    fdata.append('act','del');
+    fdata.append('meja',meja);
+    fdata.append('id',id);
+    fdata.append('produk_id',produk);
+    fdata.append('bungkus',bungkus);
+
+    $.ajax({
+	url:'backend/?',
+	method:'POST',
+	data:fdata,
+	contentType:false,
+	cache:false,
+	processData:false,
+	//contentType: 'multipart/form-data',
+	success:function(resp){
+	    console.log('hasil dari server');
+	    let dx=JSON.parse(resp);	    
+	    //console.table(dx);
+	    console.log(resp);
+	    //update id_ubahtbody
+	    $('#dialog-edit').dialog("close");
+	},
+	error:function(xhr,status,error){
+	    console.log('getting data error');
+	}
+    });
+    //eof kirim data
+    $.fn.resetForms();
+});
+
+
+$('#id_ubahtbody').on('click','.btnmin',function(){
+    let meja=$(this).attr('data-meja');
+    let id=$(this).attr('data-id');
+    let produk=$(this).attr('data-produk');
+    let bungkus=$(this).attr('data-bungkus');
+    let jumlah=$(this).attr('data-jumlah');
+    jumlah=parseInt(jumlah);
+    if(jumlah>1){
+	jumlah--;
+    }
+    console.log('jumlah: '+jumlah);
+    
+    let fdata=new FormData();
+    fdata.append('mod',mod);
+    fdata.append('act','min');
+    fdata.append('meja',meja);
+    fdata.append('id',id);
+    fdata.append('produk_id',produk);
+    fdata.append('bungkus',bungkus);
+    fdata.append('jumlah',jumlah);
+
+    $.ajax({
+	url:'backend/?',
+	method:'POST',
+	data:fdata,
+	contentType:false,
+	cache:false,
+	processData:false,
+	//contentType: 'multipart/form-data',
+	success:function(resp){
+	    console.log('hasil dari server');
+	    let dx=JSON.parse(resp);	    
+	    //console.table(dx);
+	    console.log(resp);
+	    //update id_ubahtbody
+	    $('#dialog-edit').dialog("close");
+	},
+	error:function(xhr,status,error){
+	    console.log('getting data error');
+	}
+    });
+    //eof kirim data
+    $.fn.resetForms();
 });
