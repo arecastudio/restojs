@@ -168,7 +168,7 @@ $.fn.resetForms=function(){
 	    //chart
 	    
 	    
-	    let td='',i=0,gtotal=0,bungkus='&times;';;
+	    let td='',i=0,gtotal=0,bungkus='&times;';
 	    for(let x in dx['data_tabel']){
 		i++;
 		td+='';

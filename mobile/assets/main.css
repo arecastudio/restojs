@@ -1,0 +1,32 @@
+.box{
+    width:350px;
+    float:left;
+    border:0px solid gray;
+    margin-right:5px;
+    background-color:white;
+    min-height:250px;
+}
+
+.title{
+    text-align:center;
+    font-weight:bold;
+    color:white;
+    background-color:gray;
+}
+.menux{
+    padding:0px;
+    background-color:white;
+}
+
+.tbl{
+    border-collapse:collapse;
+    width:100%;
+}
+
+.tx-center{
+    text-align:center;
+}
+
+.tx-right{
+    text-align:right;
+}
