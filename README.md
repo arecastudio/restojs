@@ -21,7 +21,7 @@ This application is an updated version to replace an old one I built several yea
 - [ ] Penjualan - Cetak Ulang per Tanggal
 - [x] Penjualan - Pemesanan Langsung
 - [x] Dapur - Status Pemesanan
-- [ ] Dapur - Antrian Dapur
+- [x] Dapur - Antrian Dapur
 - [x] Tool - Batal Meja
 - [x] Tool - Batal Pelunasan
 - [x] Tool - Ubah Pesanan
