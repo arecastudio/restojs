@@ -27,9 +27,9 @@ $("#dialog-success").dialog({
 	window.location.replace(home_url);
     },
     buttons:{
-	'Re-print Struk':function(){
+	/*'Re-print Struk':function(){
 	    console.log('cetak struk OK !');
-	},
+	},*/
 	'Tutup':function(){
 	    $(this).dialog('close');
 	}
