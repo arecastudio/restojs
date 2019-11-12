@@ -27,6 +27,11 @@
     text-align:center;
 }
 
+.theader{
+    background-color:#ddd;
+    color:white;
+}
+
 .tx-right{
     text-align:right;
 }
@@ -40,5 +45,9 @@
 }
 
 .baru{
-    background-color:aqua;
+    background-color:#ddf;
+}
+
+.icon{
+    width:20px;
 }
