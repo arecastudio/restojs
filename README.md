@@ -18,7 +18,7 @@ This application is an updated version to replace an old one I built several yea
 - [x] Penjualan - Pemesanan
 - [x] Penjualan - Pelunasan
 - [x] Penjualan - Cetak Ulang Pelunasan
-- [ ] Penjualan - Cetak Ulang Order Meja
+- [x] Penjualan - Cetak Ulang Order Meja
 - [x] Penjualan - Pemesanan Langsung
 - [x] Dapur - Status Pemesanan
 - [x] Dapur - Antrian Dapur
