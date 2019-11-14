@@ -3,7 +3,23 @@ const mod='laporan-kasir';
 console.log(mod);
 
 function ExportTable(){
-    $("#id_table_rekap_transaksi_kasir").tableExport({
+    $("#id_table_rekap").tableExport({
+	headers: true,
+	footers: true,
+	//formats: ["xlsx", "csv", "txt"],    // (String[]), filetype(s) for the export, (default: ['xlsx', 'csv', 'txt'])
+	formats: ["xls"],
+	filename: "id",
+	bootstrap: false,
+	exportButtons: true,
+	position: "top",
+	ignoreRows: null,
+	ignoreCols: null,
+	trimWhitespace: true,
+	RTL: false,
+	sheetname: "id"   
+    });
+
+    $("#id_table_detail").tableExport({
 	headers: true,
 	footers: true,
 	//formats: ["xlsx", "csv", "txt"],    // (String[]), filetype(s) for the export, (default: ['xlsx', 'csv', 'txt'])
@@ -78,7 +94,33 @@ $('#id_btnshow').on('click',function(){
 		    td+='<td>'+formatDesimal(ttl)+'</td>';
 		    td+='</tr>';
 		}
-		showLaporanRekap(td);
+
+		let tx='',ttx=0;
+		i=0;		
+		for(let x in dx['detail']){
+		    i++;
+		    //td+='';
+		    tx+='<tr>';
+		    tx+='<td>'+i+'</td>';		    
+		    tx+='<td>'+dx['detail'][x]['trx']+'</td>';
+		    tx+='<td>'+dx['detail'][x]['meja']+'</td>';
+		    tx+='<td>'+dx['detail'][x]['menu']+'</td>';
+		    tx+='<td>'+dx['detail'][x]['fharga']+'</td>';
+		    tx+='<td>'+dx['detail'][x]['jumlah']+'</td>';
+		    tx+='<td>'+dx['detail'][x]['ftotal']+'</td>';
+		    tx+='<td>'+dx['detail'][x]['bungkus']+'</td>';
+		    tx+='<td>'+dx['detail'][x]['jam']+'</td>';
+		    tx+='<td>'+dx['detail'][x]['op']+'</td>';
+		    tx+='<td>'+dx['detail'][x]['kategori']+'</td>';
+		    tx+='<td>'+dx['detail'][x]['diskon']+'</td>';
+		    //ttx=parseInt(dx['detail'][x]['harga'])*parseInt(dx['detail'][x]['jumlah']);
+		    //ttx=ttl+parseInt(dx['detail'][x]['tarif_meja']);
+		    //tx+='<td>'+formatDesimal(ttx)+'</td>';
+		    tx+='</tr>';
+		}
+
+		
+		showLaporanRekap(td,tx);
             },
             error:function(xhr,status,error){
 		console.log('getting data error');
@@ -87,11 +129,11 @@ $('#id_btnshow').on('click',function(){
     }
 });
 
-function showLaporanRekap(xd){
+function showLaporanRekap(xd,xt){
     td='<br/>';
     td+='<strong>Rekap Transaksi</strong>';
     td+='<div class="data-view">';
-    td+='<table border="0" class="table-data" id="id_table_rekap_transaksi_kasir">';
+    td+='<table border="0" class="table-data" id="id_table_rekap">';
     td+='<thead>';
     td+='<tr>';
     td+='<th>#</th>';
@@ -111,6 +153,36 @@ function showLaporanRekap(xd){
     td+='</tbody>';
     td+='</table>';
     td+='</div>';
+    
+    td+='<br/>';
+    td+='<br/>';
+    td+='<strong>Detail Transaksi</strong>';
+    td+='<div class="data-view">';
+    td+='<table border="0" class="table-data" id="id_table_detail">';
+    td+='<thead>';
+    td+='<tr>';
+    td+='<th>#</th>';
+    td+='<th>Trx</th>';
+    td+='<th>Meja</th>';
+    td+='<th>Menu</th>';
+    td+='<th>Harga</th>';
+    td+='<th>Jml</th>';
+    td+='<th>Total</th>';
+    td+='<th>Bngks</th>';
+    td+='<th>Jam</th>';
+    td+='<th>Pelayan</th>';
+    td+='<th>Kategori</th>';
+    td+='<th>Disc</th>';
+    td+='</tr>';
+    td+='</thead>';
+    td+='<tbody id="id_tbody_detail">';
+    td+=xt;
+    td+='</tbody>';
+    td+='</table>';
+    td+='</div>';
+
+    
+    
 
     $('#id_rekap').html(td);
 
