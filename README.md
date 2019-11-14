@@ -36,5 +36,5 @@ This application is an updated version to replace an old one I built several yea
 - [x] Pengaturan - Ubah Order
 - [x] Login User
 
-## Logs
-- Template decoreated for Kitchen Ordered Menu Display
+## Log(s)
+- Template decoreated for Kitchen Ordered Menu Screen

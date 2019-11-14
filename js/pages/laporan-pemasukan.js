@@ -4,6 +4,24 @@ const mod='laporan-pemasukan';
 
 const tanggal='2018-12-20';
 
+function ExportTable(){
+    $("#id_table_rekap_transaksi_harian").tableExport({
+	headers: true,
+	footers: true,
+	//formats: ["xlsx", "csv", "txt"],    // (String[]), filetype(s) for the export, (default: ['xlsx', 'csv', 'txt'])
+	formats: ["xls"],
+	filename: "id",
+	bootstrap: false,
+	exportButtons: true,
+	position: "top",
+	ignoreRows: null,
+	ignoreCols: null,
+	trimWhitespace: true,
+	RTL: false,
+	sheetname: "id"   
+    });
+}
+
 $.fn.resetForms=function(){
     console.log(tanggal);
     //$('#sp_tanggal').html(tanggal);
@@ -221,6 +239,7 @@ $.fn.resetForms=function(){
 	    }
 	    $('#id_tbody_rekap').html(td);
 	    $('#id_grandtotal').text(formatDesimal(grandtotal));
+	    ExportTable();
 	    
 	},
 	error:function(xhr,status,error){

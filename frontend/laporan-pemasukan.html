@@ -19,7 +19,7 @@
 <!--button id="btn-print">Cetak</button-->
 <strong>Rekap Transaksi</strong>
 <div class="data-view">
-    <table border="0" class="table-data">
+    <table border="0" class="table-data" id="id_table_rekap_transaksi_harian">
         <thead>
             <tr>
 		<th>#</th>
@@ -39,6 +39,9 @@
     </table>
 </div>
 <!--div id="id-notice-content">it is a notice box !</div-->
+<div>
+	<!--input type="button" name="export" value="Export to Excel" onClick ="$('#id_table_rekap_transaksi').tableExport({headers:true,footers:true,formats:['xls'],filename:'id',bootstrap:false,exportButtons:true,position:'bottom',ignoreRows:null,trimWhitespace:true,RTL:false,sheetname:'id',});" style="color:#00f;font-size:15px;font-weight:bold;padding:0px;"/-->
+</div>
 
 <br/>
 <br/>

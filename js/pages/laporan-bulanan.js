@@ -1,5 +1,23 @@
 const mod="laporan-bulanan";
 
+function ExportTable(){
+    $("#id_table_rekap_transaksi_bulanan").tableExport({
+	headers: true,
+	footers: true,
+	//formats: ["xlsx", "csv", "txt"],    // (String[]), filetype(s) for the export, (default: ['xlsx', 'csv', 'txt'])
+	formats: ["xls"],
+	filename: "id",
+	bootstrap: false,
+	exportButtons: true,
+	position: "top",
+	ignoreRows: null,
+	ignoreCols: null,
+	trimWhitespace: true,
+	RTL: false,
+	sheetname: "id"   
+    });
+}
+
 function formatDesimal(nilai){
     nilai+='';
     let val=nilai.split(',').join();
@@ -249,7 +267,7 @@ $('#btn-show').on('click',function(){
 		td+='<td align="center">'+dx['data_harian'][x]['fgtotal']+'</td>';
 	    }
 	    $('#id_tbody_daily').html(td);
-	    
+	    //ExportTable();
 	    
 	},
 	error:function(xhr,status,error){
