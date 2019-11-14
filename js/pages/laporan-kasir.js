@@ -3,7 +3,7 @@ const mod='laporan-kasir';
 console.log(mod);
 
 function ExportTable(){
-    $("#id_table_rekap_transaksi_bulanan").tableExport({
+    $("#id_table_rekap_transaksi_kasir").tableExport({
 	headers: true,
 	footers: true,
 	//formats: ["xlsx", "csv", "txt"],    // (String[]), filetype(s) for the export, (default: ['xlsx', 'csv', 'txt'])
@@ -31,6 +31,12 @@ function formatDesimal(nilai){
 $('.txtanggal').datepicker();
 $('.txtanggal').datepicker('option','dateFormat','yy-mm-dd');
 
+//$('#txtrx').val('2018-12-30');
+
+$('#txtrx').on('change',function(){
+    $('#id_rekap').html('');
+});
+
 $('#id_btnshow').on('click',function(){
     let tanggal=$('#txtrx').val();
     if(tanggal!=''){
@@ -49,23 +55,39 @@ $('#id_btnshow').on('click',function(){
 	    processData:false,
 	    //contentType: 'multipart/form-data',
             success:function(resp){
-		//console.log(resp);
+		console.log(resp);
 		let dx=JSON.parse(resp);
 		console.table(dx);
 
-		showLaporanRekap();
+		let td='',i=0,ttl=0;
+		for(let x in dx['rekap']){
+		    i++;
+		    //td+='';
+		    td+='<tr>';
+		    td+='<td>'+i+'</td>';
+		    td+='<td>'+dx['rekap'][x]['jam']+'</td>';
+		    td+='<td>'+dx['rekap'][x]['trx']+'</td>';
+		    td+='<td>'+dx['rekap'][x]['meja']+'</td>';
+		    td+='<td>'+dx['rekap'][x]['fharga']+'</td>';
+		    td+='<td>'+dx['rekap'][x]['jumlah']+'</td>';
+		    td+='<td>'+dx['rekap'][x]['ftotal']+'</td>';
+		    td+='<td>'+dx['rekap'][x]['diskon']+'</td>';
+		    td+='<td>'+dx['rekap'][x]['ftarif_meja']+'</td>';
+		    ttl=parseInt(dx['rekap'][x]['harga'])*parseInt(dx['rekap'][x]['jumlah']);
+		    ttl=ttl+parseInt(dx['rekap'][x]['tarif_meja']);
+		    td+='<td>'+formatDesimal(ttl)+'</td>';
+		    td+='</tr>';
+		}
+		showLaporanRekap(td);
             },
             error:function(xhr,status,error){
 		console.log('getting data error');
             }
-	});
-	
-
-	
+	});	
     }
 });
 
-function showLaporanRekap(){
+function showLaporanRekap(xd){
     td='<br/>';
     td+='<strong>Rekap Transaksi</strong>';
     td+='<div class="data-view">';
@@ -85,10 +107,12 @@ function showLaporanRekap(){
     td+='</tr>';
     td+='</thead>';
     td+='<tbody id="id_tbody_rekap">';
-    
+    td+=xd;
     td+='</tbody>';
     td+='</table>';
     td+='</div>';
 
     $('#id_rekap').html(td);
+
+    ExportTable();
 }
