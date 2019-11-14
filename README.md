@@ -38,3 +38,4 @@ This application is an updated version to replace an old one I built several yea
 
 ## Log(s)
 - Template decoreated for Kitchen Ordered Menu Screen
+- Add a simple module for Cashier's daily report
