@@ -35,7 +35,7 @@ $("#dialog-success").dialog({
 	window.location.replace(home_url);
     },
     buttons:{
-	'Cetak Rincian':function(){
+	'Cetak Struk Kendali':function(){
 	    console.log('cetak struk OK !');
 	    //
 	    let nomor=txnomor_meja;

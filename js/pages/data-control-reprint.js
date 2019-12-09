@@ -1,4 +1,4 @@
-const mod="reprint-invoice";
+const mod="reprint-order";
 console.log(mod);
 
 $('.txtanggal').datepicker();

@@ -239,7 +239,7 @@ $.fn.resetForms=function(){
 	    }
 	    $('#id_tbody_rekap').html(td);
 	    $('#id_grandtotal').text(formatDesimal(grandtotal));
-	    ExportTable();
+	    //ExportTable();
 	    
 	},
 	error:function(xhr,status,error){
