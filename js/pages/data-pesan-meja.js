@@ -24,6 +24,15 @@ function create_UUID(){
 }
 //eof
 
+function formatDesimal(nilai){
+    nilai+='';
+    let val=nilai.split(',').join();
+
+    vals=val.replace(new RegExp(/\B(?=(\d{3})+(?!\d))/g),",");
+    return vals;
+}
+
+
 $("#dialog-success").dialog({
     modal: true,
     bgiframe: true,
@@ -75,6 +84,25 @@ $("#dialog-success").dialog({
 	    $(this).dialog('close');
 	}
     }
+});
+
+
+$("#dialog-sebelumnya").dialog({
+    modal: true,
+    bgiframe: true,
+    resizable: false,
+    width: 600,
+    height: 400,
+    autoOpen: false,
+    buttons:{
+	'Tutup':function(){
+	    $(this).dialog('close');
+	},
+    }
+});
+
+$('#id_link_sebelumnya').on('click',function(){
+    $('#dialog-sebelumnya').dialog('open');
 });
 
 /*$.fn.updateDialogOption=function(theURL){
@@ -249,7 +277,7 @@ $.fn.resetForms=function(){
     //$('#form-add-new')[0].reset();
     //$('#id-notice-content').hide();
 
-    var table_url='backend/?data='+mod;
+    /*var table_url='backend/?data='+mod;
     $.ajax({
         url:table_url,
         method:'GET',
@@ -266,7 +294,51 @@ $.fn.resetForms=function(){
         error:function(xhr,status,error){
             console.log('getting data error');
         }
+	});*/
+
+    let fdata=new FormData();
+    fdata.append('mod',mod);
+    fdata.append('act','show');
+    fdata.append('meja',txnomor_meja);
+
+    $.ajax({
+	url:'backend/?',
+	method:'POST',
+	data:fdata,
+	contentType:false,
+	cache:false,
+	processData:false,
+	//contentType: 'multipart/form-data',
+	success:function(resp){
+            //$('#id_tbody_menu').html(resp);
+	    //karena returned value dari PHP adalah String
+	    //maka perlu di-convert ke Array JSON
+	    //untuk dapat diproses sebagai array ber-index
+	    let x=JSON.parse(resp);
+	    data_json=x['menu'];
+	    //console.table(x['sebelumnya']);
+
+	    let ts=x['sebelumnya'];
+	    let ds='';
+	    //ds+='';
+	    for(let s in ts){
+		ds+='<tr>';
+		ds+='<td>'+ts[s]['nama']+'</td>';
+		ds+='<td align="right">'+formatDesimal(ts[s]['harga'])+'</td>';
+		ds+='<td align="right">'+ts[s]['jumlah']+'</td>';
+		ds+='<td align="center">'+ts[s]['bungkus']+'</td>';
+		ds+='<td align="center">'+ts[s]['siap']+'</td>';
+		ds+='</tr>';
+	    }	   
+	    $('#id_tbody_sebelumnya').html(ds);
+	    
+	    $.fn.showTableData();
+	},
+	error:function(xhr,status,error){
+	    console.log('getting data error');
+	}
     });
+    
 }
 
 $.fn.updatePesananTable=function(){

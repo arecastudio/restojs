@@ -265,7 +265,7 @@ function showLaporanRekap(xd,xt,xdo,xto){
     td+='</div>';
 
 
-
+/*
     td+='<br/>';
     td+='<br/>';
     td+='<br/>';
@@ -320,7 +320,7 @@ function showLaporanRekap(xd,xt,xdo,xto){
     td+='</tbody>';
     td+='</table>';
     td+='</div>';
-
+*/
     
     
 
