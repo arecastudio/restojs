@@ -35,7 +35,10 @@ This application is an updated version to replace an old one I built several yea
 - [x] Pengaturan - Histori Batal
 - [x] Pengaturan - Ubah Order
 - [x] Login User
+- [ ] Set color animation for Dapur - Antrian Dapur
 
 ## Log(s)
 - Template decoreated for Kitchen Ordered Menu Screen
 - Add a simple module for Cashier's daily report
+- Update the input method for tax report
+- Adding another report for online dataset
