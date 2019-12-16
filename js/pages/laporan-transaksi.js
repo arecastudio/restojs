@@ -15,6 +15,10 @@ array_bulan={
     12:'Desember',
 };
 
+$('.txtanggal').datepicker();
+$('.txtanggal').datepicker('option','dateFormat','yy-mm-dd');
+
+
 $('#notifikasi').hide();
 //console.log(array_bulan[1]);
 $('#id_tampilan').html('');
@@ -28,18 +32,23 @@ $('#id_optbulan').html(opt);
 
 $('#id_btnshow').on('click',function(){
     $('#notifikasi').show();
-    let tahun=$('#id_opttahun').val();
-    let bulan=$('#id_optbulan').val();
-    let nama_file_xls='laporan_pajak_'+tahun+'_'+bulan;
-
+    //let tahun=$('#id_opttahun').val();
+    //let bulan=$('#id_optbulan').val();
+    
+    let tawal=$('#txtawal').val();
+    let takhir=$('#txtakhir').val();
+    let nama_file_xls='laporan_pajak_'+tawal+'_'+takhir;
+    
     //console.log('Tahun: '+tahun+', Bulan: '+bulan);
     $('#id_tampilan').html('');
 
     let fdata=new FormData();
     fdata.append('mod',mod);
     fdata.append('act','show');
-    fdata.append('tahun',tahun);
-    fdata.append('bulan',bulan);
+    //fdata.append('tahun',tahun);
+    //fdata.append('bulan',bulan);
+    fdata.append('tawal',tawal);
+    fdata.append('takhir',takhir);
 
     //console.log(fdata);
 
