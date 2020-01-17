@@ -28,13 +28,28 @@ $('#id_optdiskon').html(
 );
 
 $('#id_optdiskon').on('change',(e)=>{
-    let nilai=e.target.value;
-    console.log(nilai+' OK');
+    let nilai_diskon=e.target.value;
+    //console.log(nilai_diskon+' OK');
 
-    $('#id_ctunai').prop('checked',false);
-    $('#id_cnontunai').prop('checked',false);
+    
     //$('#id_ctunai').trigger('click');
     //$('#id_cnontunai').trigger('click');
+
+    //disable and reset tunai entry
+    $('#id_txtunai').val('0');
+    $('#id_txtunai').attr('disabled','true');
+    $('#id_btnpastetunai').attr('disabled','true');
+    $('#id_ctunai').prop('checked',false);
+
+    //disable and reset non-tunai entry
+    $('#id_txnontunai').val('0');
+    $('#id_txnontunai').attr('disabled','true');
+    $('#id_txnoedc').val('');
+    $('#id_txnoedc').attr('disabled','true');
+    $('#id_optbank').val('');
+    $('#id_optbank').attr('disabled','true');
+    $('#id_btnpastenontunai').attr('disabled','true');
+    $('#id_cnontunai').prop('checked',false);
 });
 
 
