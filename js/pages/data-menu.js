@@ -24,7 +24,7 @@ $.fn.resetForms=function(){
 		td+='<td align="center">'+i+'</td>';
 		td+='<td>'+dx[x]['nama']+'</td>';
 		td+='<td align="center">'+dx[x]['kategori']+'</td>';
-		td+='<td align="right">'+dx[x]['harga']+'</td>';
+		td+='<td align="right">'+dx[x]['fharga']+'</td>';
 		td+='<td align="center"><a href="foto/'+dx[x]['gambar']+'" target="_blank" title="Klik di sini untul melihat gambar ukuran penuh !">Lihat</a></td>';
 		td+='<td align="center"><button class="btn-mod-edit" data-id="'+dx[x]['id']+'" data-nama="'+dx[x]['nama']+'" data-kategori="'+dx[x]['kategori']+'" data-harga="'+dx[x]['harga']+'" data-gambar="'+dx[x]['gambar']+'" data-kategoriid="'+dx[x]['kategori_id']+'">Edit</button></td>';
 		//td+='<td align="center">'+dx[x]['id']+'</td>';

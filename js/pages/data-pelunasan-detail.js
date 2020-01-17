@@ -16,6 +16,28 @@ function formatDesimal(nilai){
     return vals;
 }
 
+
+$('#id_optdiskon').html(
+    ()=>{
+	let i=0,prs='';
+	for(i=0;i<=100;i++){
+	    prs+=`<option value=${i}>${i}</option>`;
+	}
+	return prs;
+    }
+);
+
+$('#id_optdiskon').on('change',(e)=>{
+    let nilai=e.target.value;
+    console.log(nilai+' OK');
+
+    $('#id_ctunai').prop('checked',false);
+    $('#id_cnontunai').prop('checked',false);
+    //$('#id_ctunai').trigger('click');
+    //$('#id_cnontunai').trigger('click');
+});
+
+
 $("#dialog-success").dialog({
     modal: true,
     bgiframe: true,
