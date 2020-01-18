@@ -1,8 +1,10 @@
 const mod="data-pelunasan-detail";
 const txnomor_meja=$('#txnomor-meja').val();
+var public_grand_total_static=0;
 var public_grand_total=0;
 var public_data_pesan=[];
 var home_url='http://localhost:8010/';
+var global_discount=0;
 
 //$('.table-datax').DataTable();
 //$('#id_btnlunaskan').attr('disabled','true');
@@ -20,7 +22,7 @@ function formatDesimal(nilai){
 $('#id_optdiskon').html(
     ()=>{
 	let i=0,prs='';
-	for(i=0;i<=100;i++){
+	for(i=0;i<=70;i++){
 	    prs+=`<option value=${i}>${i}</option>`;
 	}
 	return prs;
@@ -28,7 +30,8 @@ $('#id_optdiskon').html(
 );
 
 $('#id_optdiskon').on('change',(e)=>{
-    let nilai_diskon=e.target.value;
+    let nilai_diskon=parseInt(e.target.value);
+    global_discount=nilai_diskon;
     //console.log(nilai_diskon+' OK');
 
     
@@ -50,6 +53,25 @@ $('#id_optdiskon').on('change',(e)=>{
     $('#id_optbank').attr('disabled','true');
     $('#id_btnpastenontunai').attr('disabled','true');
     $('#id_cnontunai').prop('checked',false);
+
+
+    let harga_diskon=public_grand_total_static-((nilai_diskon/100)*public_grand_total_static);
+    public_grand_total=harga_diskon;
+    //console.log(harga_diskon);
+
+    $('#id_txgtotal').html(formatDesimal(harga_diskon));
+    $('#id_txbilang').html(terbilang(harga_diskon));
+
+    $('#id_kembali').html('-'+formatDesimal(harga_diskon))
+
+    if(harga_diskon>=500000){
+	$('#id_chkpotensial').prop('checked',true);
+    }else{
+	//$('#id_chkpotensial').removeAttr('checked');
+	$('#id_chkpotensial').prop('checked',false);
+    }
+
+    
 });
 
 
@@ -90,7 +112,7 @@ $.fn.resetForms=function(){
         success:function(resp){
 	    //console.log(resp);
 	    let dx=JSON.parse(resp);
-	    console.table(dx);
+	    //console.table(dx);
 
 	    let ed='',j=0;
 	    for(let e in dx['edc']){
@@ -143,6 +165,7 @@ $.fn.resetForms=function(){
 
 	    grandtotal=grandtotal+parseInt(dx['tarif']);
 	    public_grand_total=grandtotal;
+	    public_grand_total_static=grandtotal;
 
 	    if(grandtotal>=500000){
 		$('#id_chkpotensial').attr('checked','checked');
@@ -299,6 +322,7 @@ $('#id_btnlunaskan').on('click',function(){
     fdata.append('grandtotal',public_grand_total);
     fdata.append('kembali',$('#id_kembali').text());
     fdata.append('potensial',potensial);
+    fdata.append('discount',global_discount);
 
     $.ajax({
 	url:'backend/?',
