@@ -8,7 +8,6 @@
 [![Gitter](https://badges.gitter.im/jquery/jquery.svg)](https://gitter.im/jquery/jquery?utm_source=badge&utm_medium=badge&utm_campaign=pr-badge)
 
 ## Description
---------------------------------------
 This application is an updated version to replace an old one I built several years ago. There is some upgrading functions or features for each modules which modified to give the user some more abilities to control and maintain the data for some proper informations. Its repository only contained the front-end of the application regarding while the rest of back-end part will only post as reqest.
 
 ## Preview
