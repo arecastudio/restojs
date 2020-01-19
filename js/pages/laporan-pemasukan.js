@@ -207,7 +207,7 @@ $.fn.resetForms=function(){
 		td+='<td align="center">'+dx['data_tabel'][x]['jam']+'</td>';
 		td+='<td align="center">'+dx['data_tabel'][x]['op']+'</td>';
 		td+='<td align="center">'+dx['data_tabel'][x]['kategori']+'</td>';
-		td+='<td align="center">'+dx['data_tabel'][x]['diskon']+'&nbsp;%</td>';
+		//td+='<td align="center">'+dx['data_tabel'][x]['diskon']+'&nbsp;%</td>';
 		td+='</tr>';
 		gtotal+=parseInt(dx['data_tabel'][x]['total']);
 	    }

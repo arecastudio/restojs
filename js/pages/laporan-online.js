@@ -171,8 +171,8 @@ $('#id_btnshow').on('click',function(){
 		    tdo+='<td>'+dx['rekap_online'][x]['diskon']+'</td>';
 		    tdo+='<td>'+dx['rekap_online'][x]['ftarif_meja']+'</td>';
 		    //ttl=parseInt(dx['rekap_online'][x]['harga'])*parseInt(dx['rekap_online'][x]['jumlah']);
-		    ttl=parseInt(dx['rekap_online'][x]['total']);
-		    ttl=ttl+parseInt(dx['rekap_online'][x]['tarif_meja']);
+		    ttl=parseInt(dx['rekap_online'][x]['gtotal']);
+		    //ttl=ttl+parseInt(dx['rekap_online'][x]['tarif_meja']);
 		    tdo+='<td>'+formatDesimal(ttl)+'</td>';
 		    tdo+='</tr>';
 		}
@@ -195,7 +195,7 @@ $('#id_btnshow').on('click',function(){
 		    txo+='<td>'+dx['detail_online'][x]['jam']+'</td>';
 		    txo+='<td>'+dx['detail_online'][x]['op']+'</td>';
 		    txo+='<td>'+dx['detail_online'][x]['kategori']+'</td>';
-		    txo+='<td>'+dx['detail_online'][x]['diskon']+'</td>';
+		    //txo+='<td>'+dx['detail_online'][x]['diskon']+'</td>';
 		    //ttx=parseInt(dx['detail'][x]['harga'])*parseInt(dx['detail'][x]['jumlah']);
 		    //ttx=ttl+parseInt(dx['detail'][x]['tarif_meja']);
 		    //tx+='<td>'+formatDesimal(ttx)+'</td>';
@@ -284,7 +284,7 @@ function showLaporanRekap(xd,xt,xdo,xto){
     td+='<th>Harga</th>';
     td+='<th>Jml</th>';
     td+='<th>Sub Total</th>';
-    td+='<th>Disc</th>';
+    td+='<th>Disc %</th>';
     td+='<th>T. Meja</th>';
     td+='<th>Total</th>';
     td+='</tr>';
@@ -313,7 +313,7 @@ function showLaporanRekap(xd,xt,xdo,xto){
     td+='<th>Jam</th>';
     td+='<th>Pelayan</th>';
     td+='<th>Kategori</th>';
-    td+='<th>Disc</th>';
+//    td+='<th>Disc</th>';
     td+='</tr>';
     td+='</thead>';
     td+='<tbody id="id_tbody_detail_online">';

@@ -32,7 +32,7 @@ $('#id_optdiskon').html(
 $('#id_optdiskon').on('change',(e)=>{
     let nilai_diskon=parseInt(e.target.value);
     global_discount=nilai_diskon;
-    //console.log(nilai_diskon+' OK');
+    console.log('Diskon: '+nilai_diskon);
 
     
     //$('#id_ctunai').trigger('click');

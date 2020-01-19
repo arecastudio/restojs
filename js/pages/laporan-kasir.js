@@ -120,11 +120,11 @@ $('#id_btnshow').on('click',function(){
 		    td+='<td>'+dx['rekap'][x]['fharga']+'</td>';
 		    td+='<td>'+dx['rekap'][x]['jumlah']+'</td>';
 		    td+='<td>'+dx['rekap'][x]['ftotal']+'</td>';
-		    td+='<td>'+dx['rekap'][x]['diskon']+'</td>';
+		    td+='<td align="center">'+dx['rekap'][x]['diskon']+'</td>';
 		    td+='<td>'+dx['rekap'][x]['ftarif_meja']+'</td>';
 		    //ttl=parseInt(dx['rekap'][x]['harga'])*parseInt(dx['rekap'][x]['jumlah']);
-		    ttl=parseInt(dx['rekap'][x]['total']);
-		    ttl=ttl+parseInt(dx['rekap'][x]['tarif_meja']);
+		    ttl=parseInt(dx['rekap'][x]['gtotal']);
+		    //ttl=ttl+parseInt(dx['rekap'][x]['tarif_meja']);
 		    td+='<td>'+formatDesimal(ttl)+'</td>';
 		    td+='</tr>';
 		}
@@ -146,7 +146,7 @@ $('#id_btnshow').on('click',function(){
 		    tx+='<td>'+dx['detail'][x]['jam']+'</td>';
 		    tx+='<td>'+dx['detail'][x]['op']+'</td>';
 		    tx+='<td>'+dx['detail'][x]['kategori']+'</td>';
-		    tx+='<td>'+dx['detail'][x]['diskon']+'</td>';
+		    //tx+='<td>'+dx['detail'][x]['diskon']+'</td>';
 		    //ttx=parseInt(dx['detail'][x]['harga'])*parseInt(dx['detail'][x]['jumlah']);
 		    //ttx=ttl+parseInt(dx['detail'][x]['tarif_meja']);
 		    //tx+='<td>'+formatDesimal(ttx)+'</td>';
@@ -195,7 +195,7 @@ $('#id_btnshow').on('click',function(){
 		    txo+='<td>'+dx['detail_online'][x]['jam']+'</td>';
 		    txo+='<td>'+dx['detail_online'][x]['op']+'</td>';
 		    txo+='<td>'+dx['detail_online'][x]['kategori']+'</td>';
-		    txo+='<td>'+dx['detail_online'][x]['diskon']+'</td>';
+		    //txo+='<td>'+dx['detail_online'][x]['diskon']+'</td>';
 		    //ttx=parseInt(dx['detail'][x]['harga'])*parseInt(dx['detail'][x]['jumlah']);
 		    //ttx=ttl+parseInt(dx['detail'][x]['tarif_meja']);
 		    //tx+='<td>'+formatDesimal(ttx)+'</td>';
@@ -226,7 +226,7 @@ function showLaporanRekap(xd,xt,xdo,xto){
     td+='<th>Harga</th>';
     td+='<th>Jml</th>';
     td+='<th>Sub Total</th>';
-    td+='<th>Disc</th>';
+    td+='<th>Disc %</th>';
     td+='<th>T. Meja</th>';
     td+='<th>Total</th>';
     td+='</tr>';
@@ -255,7 +255,7 @@ function showLaporanRekap(xd,xt,xdo,xto){
     td+='<th>Jam</th>';
     td+='<th>Pelayan</th>';
     td+='<th>Kategori</th>';
-    td+='<th>Disc</th>';
+//    td+='<th>Disc</th>';
     td+='</tr>';
     td+='</thead>';
     td+='<tbody id="id_tbody_detail">';
