@@ -109,25 +109,39 @@ $('#id_btnshow').on('click',function(){
 		console.table(dx);
 		//ONLINE-------------------------------------------------
 		let td='',i=0,ttl=0;
+		let [tdHarga,tdJumlah,tdTotal,tdDiskon,tdTMeja,tdGTotal]=Array(6).fill(0);//assign all variable with 0 by Array Fill method
+		//let tdHarga=0;
 		for(let x in dx['rekap']){
 		    i++;
 		    //td+='';
 		    td+='<tr>';
-		    td+='<td>'+i+'</td>';
-		    td+='<td>'+dx['rekap'][x]['jam']+'</td>';
-		    td+='<td>'+dx['rekap'][x]['trx']+'</td>';
-		    td+='<td>'+dx['rekap'][x]['meja']+'</td>';
-		    td+='<td>'+dx['rekap'][x]['fharga']+'</td>';
-		    td+='<td>'+dx['rekap'][x]['jumlah']+'</td>';
-		    td+='<td>'+dx['rekap'][x]['ftotal']+'</td>';
-		    td+='<td align="center">'+dx['rekap'][x]['diskon']+'</td>';
-		    td+='<td>'+dx['rekap'][x]['ftarif_meja']+'</td>';
+		    td+='<td align="center">'+i+'</td>';
+		    td+='<td align="center">'+dx['rekap'][x]['jam']+'</td>';
+		    td+='<td align="center">'+dx['rekap'][x]['trx']+'</td>';
+		    td+='<td align="center">'+dx['rekap'][x]['meja']+'</td>';
+		    td+='<td align="right">'+dx['rekap'][x]['fharga']+'</td>';tdHarga+=parseInt(dx['rekap'][x]['harga']);
+		    td+='<td align="right">'+dx['rekap'][x]['jumlah']+'</td>';tdJumlah+=parseInt(dx['rekap'][x]['jumlah']);
+		    td+='<td align="right">'+dx['rekap'][x]['ftotal']+'</td>';tdTotal+=parseInt(dx['rekap'][x]['total']);
+		    td+='<td align="center">'+dx['rekap'][x]['diskon']+'</td>';tdDiskon+=parseInt(dx['rekap'][x]['diskon']);
+		    td+='<td align="right">'+dx['rekap'][x]['ftarif_meja']+'</td>';tdTMeja+=parseInt(dx['rekap'][x]['tarif_meja']);
 		    //ttl=parseInt(dx['rekap'][x]['harga'])*parseInt(dx['rekap'][x]['jumlah']);
-		    ttl=parseInt(dx['rekap'][x]['gtotal']);
+		    ttl=parseInt(dx['rekap'][x]['gtotal']);tdGTotal+=parseInt(dx['rekap'][x]['gtotal']);
 		    //ttl=ttl+parseInt(dx['rekap'][x]['tarif_meja']);
-		    td+='<td>'+formatDesimal(ttl)+'</td>';
+		    td+='<td align="right">'+formatDesimal(ttl)+'</td>';
 		    td+='</tr>';
 		}
+		//additional for Online Recap Summary
+		td+='<tr height="50" valign="middle">';
+		td+='<td align="center" colspan="4"><strong>Summary</strong></td>';
+		td+='<td align="right">'+formatDesimal(tdHarga)+'</td>';
+		td+='<td align="right">'+formatDesimal(tdJumlah)+'</td>';
+		td+='<td align="right">'+formatDesimal(tdTotal)+'</td>';
+		td+='<td align="center">'+formatDesimal(tdDiskon)+'</td>';
+		td+='<td align="right">'+formatDesimal(tdTMeja)+'</td>';
+		td+='<td align="right">'+formatDesimal(tdGTotal)+'</td>';
+		td+='</tr>';
+
+		
 
 		let tx='',ttx=0;
 		i=0;		
@@ -135,7 +149,7 @@ $('#id_btnshow').on('click',function(){
 		    i++;
 		    //td+='';
 		    tx+='<tr>';
-		    tx+='<td>'+i+'</td>';		    
+		    tx+='<td align="center">'+i+'</td>';		    
 		    tx+='<td>'+dx['detail'][x]['trx']+'</td>';
 		    tx+='<td>'+dx['detail'][x]['meja']+'</td>';
 		    tx+='<td>'+dx['detail'][x]['menu']+'</td>';
