@@ -50,3 +50,4 @@ This application is an updated version to replace an old one I built several yea
 - Update the input method for tax report
 - Adding another report for online dataset
 - Discount feature added into payment module
+- Row added on each reports to show summary of income

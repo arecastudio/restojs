@@ -110,7 +110,7 @@ $('#id_btnshow').on('click',function(){
 		//ONLINE-------------------------------------------------
 		let td='',i=0,ttl=0;
 		let [tdHarga,tdJumlah,tdTotal,tdDiskon,tdTMeja,tdGTotal]=Array(6).fill(0);//assign all variable with 0 by Array Fill method
-		//let tdHarga=0;
+		
 		for(let x in dx['rekap']){
 		    i++;
 		    //td+='';
