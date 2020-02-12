@@ -221,6 +221,8 @@ $.fn.resetForms=function(){
 
 	    td='';i=0;
 	    let grandtotal=0;
+	    let [tdHarga,tdJumlah,tdTotal,tdDiskon,tdTMeja,tdGTotal]=Array(6).fill(0);//assign all variable with 0 by Array Fill method
+	    
 	    for(let x in dx['data_rekap']){
 		i++;
 		td+='';
@@ -229,14 +231,26 @@ $.fn.resetForms=function(){
 		td+='<td align="center">'+dx['data_rekap'][x]['jam']+'</td>';
 		td+='<td align="center">'+dx['data_rekap'][x]['id']+'</td>';
 		td+='<td align="center">'+dx['data_rekap'][x]['meja']+'</td>';
-		td+='<td align="right">'+dx['data_rekap'][x]['fharga']+'</td>';
-		td+='<td align="right">'+dx['data_rekap'][x]['jumlah']+'</td>';
-		td+='<td align="right">'+dx['data_rekap'][x]['ftotal']+'</td>';
-		td+='<td align="right">'+dx['data_rekap'][x]['diskon']+'&nbsp;%</td>';
-		td+='<td align="right">'+dx['data_rekap'][x]['ftarif_meja']+'</td>';
-		td+='<td align="right">'+dx['data_rekap'][x]['fgtotal']+'</td>';
+		td+='<td align="right">'+dx['data_rekap'][x]['fharga']+'</td>';tdHarga+=parseInt(dx['data_rekap'][x]['harga']);
+		td+='<td align="right">'+dx['data_rekap'][x]['jumlah']+'</td>';tdJumlah+=parseInt(dx['data_rekap'][x]['jumlah']);
+		td+='<td align="right">'+dx['data_rekap'][x]['ftotal']+'</td>';tdTotal+=parseInt(dx['data_rekap'][x]['total']);
+		td+='<td align="right">'+dx['data_rekap'][x]['diskon']+'&nbsp;%</td>';tdDiskon+=parseInt(dx['data_rekap'][x]['diskon']);
+		td+='<td align="right">'+dx['data_rekap'][x]['ftarif_meja']+'</td>';tdTMeja+=parseInt(dx['data_rekap'][x]['tarif_meja']);
+		td+='<td align="right">'+dx['data_rekap'][x]['fgtotal']+'</td>';tdGTotal+=parseInt(dx['data_rekap'][x]['gtotal']);
 		grandtotal+=parseInt(dx['data_rekap'][x]['gtotal']);
 	    }
+
+	    //additional for Online Recap Summary
+	    td+='<tr height="50" valign="middle">';
+	    td+='<td align="center" colspan="4"><strong>Summary</strong></td>';
+	    td+='<td align="right">'+formatDesimal(tdHarga)+'</td>';
+	    td+='<td align="right">'+formatDesimal(tdJumlah)+'</td>';
+	    td+='<td align="right">'+formatDesimal(tdTotal)+'</td>';
+	    td+='<td align="center">'+formatDesimal(tdDiskon)+'</td>';
+	    td+='<td align="right">'+formatDesimal(tdTMeja)+'</td>';
+	    td+='<td align="right">'+formatDesimal(tdGTotal)+'</td>';
+	    td+='</tr>';
+	    
 	    $('#id_tbody_rekap').html(td);
 	    $('#id_grandtotal').text(formatDesimal(grandtotal));
 	    //ExportTable();

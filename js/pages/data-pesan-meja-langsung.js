@@ -45,6 +45,39 @@ $("#dialog-success").dialog({
     buttons:{
 	'Cetak Rincian':function(){
 	    console.log('cetak struk OK !');
+	    //
+	    let nomor=txnomor_meja;
+	    
+	    if(nomor!=''){
+		let fdata=new FormData();
+		fdata.append('mod','reprint-order');
+		fdata.append('act','reprint');
+		fdata.append('meja',nomor);
+
+		//console.log('tanggal: '+tanggal+', nomor: '+nomor);
+
+		$.ajax({
+		    url:'backend/?',
+		    method:'POST',
+		    data:fdata,
+		    contentType:false,
+		    cache:false,
+		    processData:false,
+		    //contentType: 'multipart/form-data',
+		    success:function(resp){
+			console.log('hasil dari server ');
+			//let dx=JSON.parse(resp);	    
+			//console.table(dx);
+			console.log(resp);	
+		    },
+		    error:function(xhr,status,error){
+			console.log('getting data error');
+		    }
+		});
+		
+	    }	    
+	    //
+	    
 	},
 	'Tutup':function(){
 	    $(this).dialog('close');
