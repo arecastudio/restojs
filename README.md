@@ -44,6 +44,7 @@ This application is an updated version to replace an old one I built several yea
 - [x] Login User
 - [x] Set color animation for Dapur - Antrian Dapur
 - [ ] Add an order number of the day
+- [ ] Add top-button categories on mobile app Restodapur - Dashboard
 
 ## Log(s)
 - Template decoreated for Kitchen Ordered Menu Screen
