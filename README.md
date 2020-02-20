@@ -43,6 +43,9 @@ This application is an updated version to replace an old one I built several yea
 - [x] Pengaturan - Ubah Order
 - [x] Login User
 - [x] Set color animation for Dapur - Antrian Dapur
+- [ ] Add a supervision menu on Tool - Ubah Pesanan
+- [ ] Modify Laporan Kasir to Menu Baru replace on Pengaturan
+- [ ] New menu-order on exists order list should be seperated on new list bellow to avoid confusion on kitchen
 - [ ] Add an order number of the day
 - [ ] Add top-button categories on mobile app Restodapur - Dashboard
 - [ ] Add an unit Test (PHPUnit,Jest)
@@ -55,3 +58,5 @@ This application is an updated version to replace an old one I built several yea
 - Discount feature added into payment module
 - Row added on each reports to show summary of income
 - Estimated order time was added for urgent classification
+- Update database, add new field: role->tool_pindah_meja on top of tool_batalkan_meja. Make sure to update the running database on client's machine
+- Then, according to the previous log, lock the tutup-meja-kosong menu
