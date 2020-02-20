@@ -42,6 +42,9 @@ This application is an updated version to replace an old one I built several yea
 - [x] Pengaturan - Histori Batal
 - [x] Pengaturan - Ubah Order
 - [x] Login User
+
+## Post Release Update
+### Some enhancements according to situations after its product applied
 - [x] Set color animation for Dapur - Antrian Dapur
 - [ ] Add a supervision menu on Tool - Ubah Pesanan
 - [ ] Modify Laporan Kasir to Menu Baru replace on Pengaturan
@@ -49,6 +52,7 @@ This application is an updated version to replace an old one I built several yea
 - [ ] Add an order number of the day
 - [ ] Add top-button categories on mobile app Restodapur - Dashboard
 - [ ] Add an unit Test (PHPUnit,Jest)
+- [ ] Add filter Data Menu
 
 ## Log(s)
 - Template decoreated for Kitchen Ordered Menu Screen
