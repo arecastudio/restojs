@@ -43,13 +43,13 @@ This application is an updated version to replace an old one I built several yea
 - [x] Pengaturan - Ubah Order
 - [x] Login User
 
-## Post Release Update
+## Post Released Update
 ### Some enhancements according to situations after its product applied
 - [x] Set color animation for Dapur - Antrian Dapur
 - [ ] Add a supervision menu on Tool - Ubah Pesanan
 - [x] Modify Laporan Kasir to Menu Baru replace on Pengaturan
-- [ ] New menu-order on exists order-list should be put seperately on new list bellow the current to avoid kitchen-staff cunfusion
-- [ ] Add an order number of the day
+- [ ] New menu-order on exists order-list should be put seperately on new list bellow the current one
+- [ ] Add an order-number of the day
 - [ ] Add top-button categories on mobile app Restodapur - Dashboard
 - [ ] Add an unit Test (PHPUnit,Jest)
 - [ ] Add filter Data Menu
