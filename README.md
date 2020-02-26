@@ -65,3 +65,4 @@ This application is an updated version to replace an old one I built several yea
 - Estimated order time was added for urgent classification
 - Update database, add new field: role->tool_pindah_meja on top of tool_batalkan_meja. Make sure to update the running database on client's machine
 - Then, according to the previous log, lock the tutup-meja-kosong menu
+- Mobile-app item-search feature has been applied well
