@@ -59,7 +59,7 @@ This application is an updated version to replace an old one I built several yea
 - [x] DashboardDetail - Search by name
 - [x] DashboardDetail - SearchButton click on empty key call reset menulist
 - [ ] DashboardDetail - Styling modal first order-count and packaging confirmation
-- [ ] DashboardDetail - ListOrder confirmation delete item function
+- [x] DashboardDetail - ListOrder confirmation delete item function
 - [ ] DashboardDetail - Listorder confirmation re-check checkbox ability
 - [ ] DashboardDetail - LastOrder History shown in modal format
 
