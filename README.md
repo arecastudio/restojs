@@ -55,6 +55,14 @@ This application is an updated version to replace an old one I built several yea
 - [ ] Add filter Data Menu
 - [ ] Set kitchen display separately in particularly for food-order and drink-order then applied in mobile app
 
+### OrderSys Mobile App
+- [x] DashboardDetail - Search by name
+- [x] DashboardDetail - SearchButton click on empty key call reset menulist
+- [ ] DashboardDetail - Styling modal first order-count and packaging confirmation
+- [ ] DashboardDetail - ListOrder confirmation delete item function
+- [ ] DashboardDetail - Listorder confirmation re-check checkbox ability
+- [ ] DashboardDetail - LastOrder History shown in modal format
+
 ## Log(s)
 - Template decoreated for Kitchen Ordered Menu Screen
 - Add a simple module for Cashier's daily report
