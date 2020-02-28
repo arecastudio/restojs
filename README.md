@@ -50,9 +50,9 @@ This application is an updated version to replace an old one I built several yea
 - [x] Modify Laporan Kasir to Menu Baru replace on Pengaturan
 - [ ] New menu-order on exists order-list should be put seperately on new list bellow the current one
 - [ ] Add an order-number of the day
-- [ ] Add top-button categories on mobile app Restodapur - Dashboard
+- [x] Add top-button categories on mobile app Restodapur - Dashboard
 - [ ] Add an unit Test (PHPUnit,Jest)
-- [ ] Add filter Data Menu
+- [x] Add filter Data Menu
 - [ ] Set kitchen display separately in particularly for food-order and drink-order then applied in mobile app
 
 ### OrderSys Mobile App
