@@ -46,13 +46,13 @@ This application is an updated version to replace an old one I built several yea
 ## Post Released Update
 ### Some enhancements according to situations after its product applied
 - [x] Set color animation for Dapur - Antrian Dapur
-- [ ] Add a supervision menu on Tool - Ubah Pesanan
 - [x] Modify Laporan Kasir to Menu Baru replace on Pengaturan
+- [x] Add top-button categories on mobile app Restodapur - Dashboard
+- [x] Add filter Data Menu
+- [ ] Add a supervision menu on Tool - Ubah Pesanan
 - [ ] New menu-order on exists order-list should be put seperately on new list bellow the current one
 - [ ] Add an order-number of the day
-- [x] Add top-button categories on mobile app Restodapur - Dashboard
 - [ ] Add an unit Test (PHPUnit,Jest)
-- [x] Add filter Data Menu
 - [ ] Set kitchen display separately in particularly for food-order and drink-order then applied in mobile app
 
 ### OrderSys Mobile App
