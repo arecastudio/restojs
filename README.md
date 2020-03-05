@@ -49,7 +49,7 @@ This application is an updated version to replace an old one I built several yea
 - [x] Modify Laporan Kasir to Menu Baru replace on Pengaturan
 - [x] Add top-button categories on mobile app Restodapur - Dashboard
 - [x] Add filter Data Menu
-- [ ] Set kitchen display separately in particularly for food-order and drink-order then applied in mobile app
+- [x] Set kitchen display separately in particularly for food-order and drink-order then applied in mobile app
 - [ ] New menu-order on exists order-list should be put seperately on new list bellow the current one
 - [ ] Add a supervision menu on Tool - Ubah Pesanan
 - [ ] Add an order-number of the day
@@ -73,3 +73,4 @@ This application is an updated version to replace an old one I built several yea
 - Update database, add new field: role->tool_pindah_meja on top of tool_batalkan_meja. Make sure to update the running database on client's machine
 - Then, according to the previous log, lock the tutup-meja-kosong menu
 - Mobile-app item-search feature has been applied well
+- Kitchen screen only show food-order
