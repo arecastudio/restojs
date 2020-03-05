@@ -50,7 +50,7 @@ This application is an updated version to replace an old one I built several yea
 - [x] Add top-button categories on mobile app Restodapur - Dashboard
 - [x] Add filter Data Menu
 - [x] Set kitchen display separately in particularly for food-order and drink-order then applied in mobile app
-- [ ] New menu-order on exists order-list should be put seperately on new list bellow the current one
+- [x] New menu-order on exists order-list should be put seperately on new list bellow the current one
 - [ ] Add a supervision menu on Tool - Ubah Pesanan
 - [ ] Add an order-number of the day
 - [ ] Add an unit Test (PHPUnit,Jest)
@@ -58,7 +58,7 @@ This application is an updated version to replace an old one I built several yea
 ### OrderSys Mobile App
 - [x] DashboardDetail - Search by name
 - [x] DashboardDetail - SearchButton click on empty key call reset menulist
-- [ ] DashboardDetail - Styling modal first order-count and packaging confirmation
+- [x] DashboardDetail - Styling modal first order-count and packaging confirmation
 - [x] DashboardDetail - ListOrder confirmation delete item function
 - [x] DashboardDetail - LastOrder History shown in modal format
 
@@ -74,3 +74,4 @@ This application is an updated version to replace an old one I built several yea
 - Then, according to the previous log, lock the tutup-meja-kosong menu
 - Mobile-app item-search feature has been applied well
 - Kitchen screen only show food-order
+- Finishing frontend section
