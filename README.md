@@ -49,11 +49,11 @@ This application is an updated version to replace an old one I built several yea
 - [x] Modify Laporan Kasir to Menu Baru replace on Pengaturan
 - [x] Add top-button categories on mobile app Restodapur - Dashboard
 - [x] Add filter Data Menu
-- [ ] Add a supervision menu on Tool - Ubah Pesanan
+- [ ] Set kitchen display separately in particularly for food-order and drink-order then applied in mobile app
 - [ ] New menu-order on exists order-list should be put seperately on new list bellow the current one
+- [ ] Add a supervision menu on Tool - Ubah Pesanan
 - [ ] Add an order-number of the day
 - [ ] Add an unit Test (PHPUnit,Jest)
-- [ ] Set kitchen display separately in particularly for food-order and drink-order then applied in mobile app
 
 ### OrderSys Mobile App
 - [x] DashboardDetail - Search by name
