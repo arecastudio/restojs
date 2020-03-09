@@ -23,13 +23,14 @@ $.fn.resetForms=function(){
         success:function(resp){
 	    let dx=JSON.parse(resp);	    
 	    //console.table(dx);
-	    let td='',i=0;
+	    let td='',i=0,tambahan='';
 	    for(let x in dx){
+		tambahan=dx[x]['baru']==1?' <i>(tambahan)</i>':'';
 		i++;
 		td+='<tr>';
 		td+='<td>'+i+'</td>';
 		td+='<td>'+dx[x]['meja']+'</td>';
-		td+='<td>'+dx[x]['nama']+'</td>';
+		td+='<td>'+dx[x]['nama']+tambahan+'</td>';
 		td+='<td>'+dx[x]['jumlah']+'</td>';		
 		td+='<td>'+dx[x]['jam']+'</td>';
 		td+='<td class="txcenter">'+dx[x]['bungkus']+'</td>';
