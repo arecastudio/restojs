@@ -75,3 +75,6 @@ This application is an updated version to replace an old one I built several yea
 - Mobile-app item-search feature has been applied well
 - Kitchen screen only show food-order
 - Finishing frontend section
+
+## Database structure update(s):
+- table: tutup-meja-pesanan, add-fields: uuid,catatan.

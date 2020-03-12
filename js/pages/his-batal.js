@@ -15,6 +15,14 @@ array_bulan={
     12:'Desember',
 };
 
+function formatDesimal(nilai){
+    nilai+='';
+    let val=nilai.split(',').join();
+
+    vals=val.replace(new RegExp(/\B(?=(\d{3})+(?!\d))/g),",");
+    return vals;
+}
+
 $('#notifikasi').hide();
 //console.log(array_bulan[1]);
 $('#id_tampilan').html('');
@@ -61,7 +69,7 @@ $('#id_btnshow').on('click',function(){
     fdata.append('tahun',tahun);
     fdata.append('bulan',bulan);
 
-    //console.log(fdata);
+    console.log(`bulan:${bulan},tahun:${tahun}`);
 
     $.ajax({
 	url:'backend/?',
@@ -74,7 +82,8 @@ $('#id_btnshow').on('click',function(){
 	success:function(resp){
 	    //console.log('message: '+resp);
 	    $('#notifikasi').hide();
-	    let dx=JSON.parse(resp);
+	    //let dx=JSON.parse(resp);
+	    let dx=$.parseJSON (resp);
 	    //console.table(dx);
 	    let tr='',i=0,_ppn=0;
 	    
@@ -86,7 +95,7 @@ $('#id_btnshow').on('click',function(){
 		tr+='<td align="center">'+dx[x]['nomeja']+'</td>';		
 		tr+='<td align="center">'+dx[x]['tanggal']+'</td>';
 		tr+='<td>'+dx[x]['produk']+'</td>';
-		tr+='<td align="right">'+dx[x]['jumlah']+'</td>';
+		tr+='<td align="right">'+formatDesimal(dx[x]['jumlah'])+'</td>';
 		tr+='</tr>';
 	    }
 	    $('#id_tbody').html(tr);
