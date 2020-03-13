@@ -95,7 +95,10 @@ $('#id_btnshow').on('click',function(){
 		tr+='<td align="center">'+dx[x]['nomeja']+'</td>';		
 		tr+='<td align="center">'+dx[x]['tanggal']+'</td>';
 		tr+='<td>'+dx[x]['produk']+'</td>';
+		tr+='<td align="right">'+formatDesimal(dx[x]['harga'])+'</td>';
 		tr+='<td align="right">'+formatDesimal(dx[x]['jumlah'])+'</td>';
+		tr+='<td>'+dx[x]['bungkus']+'</td>';
+		tr+='<td align="right">'+formatDesimal(parseInt(dx[x]['harga'])*parseInt(dx[x]['jumlah']))+'</td>';
 		tr+='</tr>';
 	    }
 	    $('#id_tbody').html(tr);

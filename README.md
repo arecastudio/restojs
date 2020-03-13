@@ -63,7 +63,8 @@ This application is an updated version to replace an old one I built several yea
 - [x] DashboardDetail - LastOrder History shown in modal format
 
 ### Database structure update(s):
-- table: tutup-meja-pesanan, add-fields: uuid,catatan.
+- table: tutup-meja-pesanan: add-fields: uuid,catatan. modify-field: remove auto_increment on ID then reset all data to zero
+- table: hapus-pesanan-detail: create like detail. No primary key, drop it. Add meja_nomor
 
 ## Log(s)
 - Template decoreated for Kitchen Ordered Menu Screen
