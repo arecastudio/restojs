@@ -62,6 +62,9 @@ This application is an updated version to replace an old one I built several yea
 - [x] DashboardDetail - ListOrder confirmation delete item function
 - [x] DashboardDetail - LastOrder History shown in modal format
 
+### Database structure update(s):
+- table: tutup-meja-pesanan, add-fields: uuid,catatan.
+
 ## Log(s)
 - Template decoreated for Kitchen Ordered Menu Screen
 - Add a simple module for Cashier's daily report
@@ -75,6 +78,3 @@ This application is an updated version to replace an old one I built several yea
 - Mobile-app item-search feature has been applied well
 - Kitchen screen only show food-order
 - Finishing frontend section
-
-## Database structure update(s):
-- table: tutup-meja-pesanan, add-fields: uuid,catatan.
