@@ -79,3 +79,4 @@ This application is an updated version to replace an old one I built several yea
 - Mobile-app item-search feature has been applied well
 - Kitchen screen only show food-order
 - Finishing frontend section
+- Login layout for waitress already fixed, each order sent to kitchen will bear each person information for accountability
