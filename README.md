@@ -81,3 +81,4 @@ This application is an updated version to replace an old one I built several yea
 - Kitchen screen only show food-order
 - Finishing frontend section
 - Login layout for waitress already fixed, each order sent to kitchen will bear each person information for accountability
+- Whole data report layout updated. Prevent empty table to pay and print anything on payment layout.

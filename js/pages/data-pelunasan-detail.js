@@ -5,6 +5,7 @@ var public_grand_total=0;
 var public_data_pesan=[];
 var home_url='http://localhost:8010/';
 var global_discount=0;
+var jmlData=0;
 
 //$('.table-datax').DataTable();
 //$('#id_btnlunaskan').attr('disabled','true');
@@ -87,8 +88,8 @@ $("#dialog-success").dialog({
     },
     buttons:{
 	/*'Re-print Struk':function(){
-	    console.log('cetak struk OK !');
-	},*/
+	  console.log('cetak struk OK !');
+	  },*/
 	'Tutup':function(){
 	    $(this).dialog('close');
 	}
@@ -124,6 +125,8 @@ $.fn.resetForms=function(){
 	    $('#id_optbank').append(ed);
 
 	    //public_data_pesan=dx['pesanan'];
+	    jmlData=dx['pesanan'].length;
+	    console.log(`jumlah data:${jmlData}`);
 	    let dt='',i=0,total=0,grandtotal=0;
 	    for(let d in dx['pesanan']){
 		public_data_pesan.push({
@@ -159,6 +162,7 @@ $.fn.resetForms=function(){
 		dt+='<td align="center">'+bungkus+'</td>';
 		//dt+='<td align="center">'+dx['pesanan'][d]['bungkus']+'</td>';
 		dt+='<td align="center">'+dx['pesanan'][d]['siap']+'</td>';
+		dt+='<td align="center">'+dx['pesanan'][d]['operator']+'</td>';
 		dt+='</tr>';
 	    }
 	    let just_total=grandtotal;
@@ -199,7 +203,7 @@ $('#id_ctunai').on('click',function(){
     let _status=$(this).is(':checked');
     console.log('tunai: '+_status);
 
-    if(_status==true){
+    if(_status==true){	
 	$('#id_txtunai').removeAttr('disabled');
 	$('#id_btnpastetunai').removeAttr('disabled');
     }else{
@@ -284,7 +288,9 @@ $('#id_kembali').on('DOMSubtreeModified',function(){
 $.fn.updateKembali=function(){
     let val=$('#id_kembali').text().split(',').join('');
     if(parseInt(val)>=0){
-	$('#id_btnlunaskan').removeAttr('disabled');
+	if(jmlData>0){//jumlah menu order, prevent pembayaran orderan kosong
+	    $('#id_btnlunaskan').removeAttr('disabled');
+	}	
     }else{
 	$('#id_btnlunaskan').attr('disabled','true');
     }
