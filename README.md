@@ -12,7 +12,7 @@ This application is an updated version to replace an old one I built several yea
 
 ## Preview
 ![screenshoot](img1.png)
-![screenshoot2](img2.png)
+![screenshoot2](img0.png)
 
 ## TODO
 ### Detail Progress of Each Frontend Modules
