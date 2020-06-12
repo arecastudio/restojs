@@ -13,7 +13,9 @@ This application is an updated version to replace an old one I built several yea
 ## Preview
 ![screenshoot](img1.png)
 ![screenshoot2](img0.png)
+## Download on Google PlayStore
 Download mobile app here : https://play.google.com/store/apps/details?id=com.kristorder
+
 ## TODO
 ### Detail Progress of Each Frontend Modules
 - [x] Beranda 
