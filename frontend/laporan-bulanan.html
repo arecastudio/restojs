@@ -1,1 +1,114 @@
-/media/tux/B23A-BB0F/kristo-app/htdocs/restojs/frontend/laporan-bulanan.html
+<div class="judul-frame">
+    <strong>Laporan Pemasukan</strong>
+</div>
+
+<div>
+    <input type="radio" name="radio-type" class="rtype" value="harian" checked="checked" />&nbsp;Harian
+    <input type="radio" name="radio-type" class="rtype" value="bulanan" />&nbsp;Bulanan
+    &nbsp;
+    
+    <span id="span-bulanan">
+    <input type="text" class="txtanggal" id="txtawal" size="9px" style="text-align:center;" readonly="readonly" placeholder="tanggal awal" />
+    <span style="font-size:small;" id="sampai-dengan">s/d</span>
+    <input type="text" class="txtanggal" id="txtakhir" size="9px" style="text-align:center;" readonly="readonly" placeholder="tanggal akhir" />
+    </span>
+    
+    <span id="span-harian">
+      <input type="text" class="txtanggal" id="txtrx" size="9px" style="text-align:center;" readonly="readonly" placeholder="tanggal" />
+    </span>
+    &nbsp;
+    <button id="btn-show">Tampilkan</button>
+</div>
+
+<div id="notifikasi" style="text-align:center;margin:5px;">
+    Tunggu hingga proses selesai...
+    <br/>
+    <br/>
+    <img src="images/icon_loading.gif" />
+</div>
+
+<div id="id_divgrandtotal">
+  <strong>Grand Total  Rp. <span id="id_grandtotal">0</span></strong>
+</div>
+
+<div style="margin-top:5px;margin-bottom:5px;" id="box-chart">
+<div id="chartContainer" style="height: 300px; width: 100%;margin-top:20px;"></div>
+<hr/>
+<div>  
+  <div id="pieContainer" style="height: 300px; width: 45%;margin-top:20px;float:left;"></div>
+  <div id="peakContainer" style="height:300px;width:45%;margin-top:20px;float:right;"></div>
+</div>
+<div style="clear:left;">&nbsp;</div>
+</div>
+
+
+<div class="table-report" id="tb-daily">
+  <strong>Transaksi Harian</strong>
+  <div class="data-view">
+    <table border="0" class="table-data">
+      <thead>
+        <tr>
+	  <th>#</th>
+	  <th>Tgl</th>
+	  <th>Jml Order</th>
+	  <th>G. Total</th>
+        </tr>
+      </thead>
+      <tbody id="id_tbody_daily">
+      </tbody>
+    </table>
+  </div>
+</div>
+
+<div class="table-report" id="tb-rekap">
+  <strong>Rekap Transaksi</strong>
+  <div class="data-view">
+    <table border="0" class="table-data" id="id_table_rekap_transaksi_bulanan">
+      <thead>
+        <tr>
+	  <th>#</th>
+	  <th>Jam</th>
+	  <th>Trx</th>
+	  <th>Meja</th>
+	  <th>Harga</th>
+	  <th>Jml</th>
+	  <th>Sub Total</th>
+	  <th>Disc %</th>
+	  <th>T. Meja</th>
+	  <th>Total</th>
+        </tr>
+      </thead>
+      <tbody id="id_tbody_rekap">
+      </tbody>
+    </table>
+  </div>
+</div>
+
+
+<div class="table-report" id="tb-detail">
+  <strong>Detail Transaksi</strong>
+  <div class="data-view">
+    <table border="0" class="table-data">
+      <thead>
+        <tr>
+	  <th>#</th>
+	  <th>Trx</th>
+	  <th>Meja</th>
+	  <th>Menu</th>
+	  <th>Harga</th>
+	  <th>Jml</th>
+	  <th>Total</th>
+	  <th>Bngks</th>
+	  <th>Jam</th>
+	  <th>Pelayan</th>
+	  <th>Kategori</th>
+	  <!--th>Disc</th-->	    
+        </tr>
+      </thead>
+      <tbody id="id_tbody">
+      </tbody>
+    </table>
+  </div>
+</div>
+
+<script src="js/pages/laporan-bulanan.js"></script>

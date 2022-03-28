@@ -1,1 +1,15 @@
-/media/tux/B23A-BB0F/kristo-app/htdocs/restojs/js/pages/logout.js
+$.fn.resetForms=function(){
+    $.ajax({
+	url:'backend/?data=logout',
+	method:'GET',
+	success:function(resp){
+	    let dx=JSON.parse(resp);
+	    window.location.replace(dx['url']);
+	},
+	error:function(xhr,status,error){
+            console.log('getting data error');
+	}
+    });
+}
+
+$.fn.resetForms();

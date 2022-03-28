@@ -1,1 +1,65 @@
-/media/tux/B23A-BB0F/kristo-app/htdocs/restojs/frontend/his-hapus-order.html
+<div class="judul-frame">
+    <strong>History Hapus Menu Orderan</strong>
+</div>
+
+<br/>
+
+<div>
+    <label for="id_opttahun">Tahun</label>
+    <select id="id_opttahun">
+    </select>
+
+    &nbsp;
+    &nbsp;
+    &nbsp;
+
+    <label for="id_optbulan">Bulan</label>
+    <select id="id_optbulan">
+    </select>
+
+    &nbsp;
+    &nbsp;
+    &nbsp;
+    &nbsp;
+    &nbsp;
+
+    <button id="id_btnshow">Tampilkan</button>
+</div>
+
+
+<br/>
+<div id="notifikasi" style="text-align:center;margin:5px;">
+    Tunggu hingga proses selesai...
+    <br/>
+    <br/>
+    <img src="images/icon_loading.gif" />
+</div>
+
+
+
+<div class="data-view">
+  <table border="0" class="table-data">
+    <thead>
+      <tr>
+      	<th>#</th>
+      	<th>Operator</th>
+      	<th>No. Meja</th>
+      	<th>Waktu Penghapusan</th>
+      	<th>Menu Pesanan</th>
+      	<th>Harga</th>
+	<th>Jumlah</th>
+	<th>Bungkus</th>
+	<th>Total</th>
+      </tr>
+    </thead>
+    <tbody id="id_tbody">
+    </tbody>
+  </table>
+</div>
+
+<p style="">Keterangan:<br/>
+Berbeda dengan Pembatalan Meja. Laporan ini menampilkan history menu-orderan yang dibatalkan, <i>sering kali terjadi ketika pelanggan menunggu terlalu lama</i>
+</p>
+
+
+<script src="js/pages/his-hapus-order.js"></script>

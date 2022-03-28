@@ -1,1 +1,52 @@
-/media/tux/B23A-BB0F/kristo-app/htdocs/restojs/frontend/laporan-transaksi.html
+<div class="judul-frame">
+    <strong>Laporan Pajak</strong>
+</div>
+
+<br/>
+
+<div>
+    <span id="span-bulanan">
+    <input type="text" class="txtanggal" id="txtawal" size="9px" style="text-align:center;" readonly="readonly" placeholder="tanggal awal" />
+    <span style="font-size:small;" id="sampai-dengan">s/d</span>
+    <input type="text" class="txtanggal" id="txtakhir" size="9px" style="text-align:center;" readonly="readonly" placeholder="tanggal akhir" />
+    </span>
+
+    &nbsp;
+    &nbsp;
+    &nbsp;
+    &nbsp;
+    &nbsp;
+
+    <button id="id_btnshow">Tampilkan</button>
+</div>
+
+
+<br/>
+<div id="notifikasi" style="text-align:center;margin:5px;">
+    Tunggu hingga proses selesai...
+    <br/>
+    <br/>
+    <img src="images/icon_loading.gif" />
+</div>
+
+
+<div class="data-viewx" id="id_tampilan">
+    <table border="1" class="table-datax" id="id_tableTax" style="border-collapse:collapse;">
+	<thead>
+            <tr>
+		<th>#</th>
+		<th>Trx ID</th>
+		<th>Tanggal</th>
+		<th>Total Harga Termasuk PPN</th>		
+		<th>Total Harga Tanpa PPN</th>		
+		<th>PPN 10%</th>
+		<th>Jumlah PPN</th>
+            </tr>
+	</thead>
+	<tbody id="id_tbody">
+	</tbody>
+    </table>
+</div>
+
+
+<script src="js/pages/laporan-transaksi.js"></script>

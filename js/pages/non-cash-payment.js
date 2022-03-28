@@ -1,1 +1,186 @@
-/media/tux/B23A-BB0F/kristo-app/htdocs/restojs/js/pages/non-cash-payment.js
+const mod="non-tunai";
+
+$.fn.resetForms=function(){
+    $('#form-add-new')[0].reset();
+    $('#id-notice-content').hide();
+
+    var table_url='backend/?data='+mod;
+    $.ajax({
+        url:table_url,
+        method:'GET',
+        success:function(resp){
+            $('#id_tbody').html(resp);
+        },
+        error:function(xhr,status,error){
+            console.log('getting data error');
+        }
+    });
+}
+
+$.fn.resetForms();
+
+$("#dialog-add-new").dialog({
+    modal: true,
+    bgiframe: true,
+    resizable: false,
+    width: 400,
+    height: 250,
+    autoOpen: false
+});
+
+$("#dialog-edit").dialog({
+    modal: true,
+    bgiframe: true,
+    resizable: false,
+    width: 400,
+    height: 270,
+    autoOpen: false
+});
+
+$("#dialog-delete").dialog({
+    modal: true,
+    bgiframe: true,
+    resizable: false,
+    width: 400,
+    height: 300,
+    autoOpen: false
+});
+
+$('#btn-add-new').click(function(){
+    $("#dialog-add-new").dialog('option', 'buttons', {
+        "Submit" : function() {
+            let nama=$('#txnama').val();
+
+	    let fdata=new FormData();
+	    fdata.append('mod',mod);
+	    fdata.append('act','addnew');
+	    fdata.append('nama',nama);
+
+	    console.log(fdata);
+
+	    $.ajax({
+		url:'backend/?',
+		method:'POST',
+		data:fdata,
+		contentType:false,
+		cache:false,
+		processData:false,
+		//contentType: 'multipart/form-data',
+		success:function(resp){
+		    console.log('message: '+resp);
+		    $.fn.resetForms();
+		    $('#id-notice-content').html(resp);
+		    $('#id-notice-content').show();
+		    
+		},
+		error:function(xhr,status,error){
+		    console.log('getting data error');
+		}
+	    });		  
+
+            $('#form-add-new')[0].reset();
+            $(this).dialog("close");		  
+        },
+        "Cancel" : function() {
+            $(this).dialog("close");
+        }
+    });
+    $("#dialog-add-new").dialog("open");
+});
+
+$('#id_tbody').on('click','.btn-mod-edit',function(){
+    let tid=$(this).attr('data-id');
+    let tnama=$(this).attr('data-nama');
+
+    //$('#txid_edit').val(tid);
+    $('#txnama_edit').val(tnama);
+
+    $("#dialog-edit").dialog('option', 'buttons', {
+        "Submit" : function() {
+            //let id=$('#txid_edit').val();
+            let nama=$('#txnama_edit').val();
+
+	    fdata=new FormData();		 
+	    fdata.append('mod',mod);
+	    fdata.append('act','edit');
+	    fdata.append('id',tid);
+	    fdata.append('nama',nama);
+
+            console.log(fdata);
+
+	    $.ajax({
+		url:'backend/?',
+		method:'POST',
+		data:fdata,
+		contentType:false,
+		cache:false,
+		processData:false,
+		//contentType: 'multipart/form-data',
+		success:function(resp){
+		    console.log('message: '+resp);
+		    $.fn.resetForms();
+		    $('#id-notice-content').html(resp);
+		    $('#id-notice-content').show();
+		    
+		},
+		error:function(xhr,status,error){
+		    console.log('getting data error');
+		}
+	    });
+	    
+            $('#form-edit')[0].reset();
+            $(this).dialog("close");
+        },
+        "Cancel" : function() {
+            $(this).dialog("close");
+        }
+    });
+    $("#dialog-edit").dialog("open");	 
+});
+
+$('#id_tbody').on('click','.btn-mod-delete',function(){
+    let tid=$(this).attr('data-id');
+    let tnama=$(this).attr('data-nama');
+
+    let msg="Yakin untuk hapus data ini?";
+    msg+="<table>";
+    //msg+="<tr><td>ID</td><td>"+tid+"</td></tr>";
+    msg+="<tr><td>Nama</td><td>"+tnama+"</td></tr>";
+    msg+="</table>";
+
+    $('#msg-delete').html(msg);	 
+
+    $("#dialog-delete").dialog('option', 'buttons', {
+        "Submit" : function() {
+	    let fdata=new FormData();		 
+	    fdata.append('mod',mod);
+	    fdata.append('act','delete');
+	    fdata.append('id',tid);
+
+	    $.ajax({
+		url:'backend/?',
+		method:'POST',
+		data:fdata,
+		contentType:false,
+		cache:false,
+		processData:false,
+		//contentType: 'multipart/form-data',
+		success:function(resp){
+		    console.log('message: '+resp);
+		    $.fn.resetForms();
+		    $('#id-notice-content').html(resp);
+		    $('#id-notice-content').show();
+		    
+		},
+		error:function(xhr,status,error){
+		    console.log('getting data error');
+		}
+	    });
+            $(this).dialog("close");
+        },
+        "Cancel" : function() {
+            $(this).dialog("close");
+        }
+    });
+    $("#dialog-delete").dialog("open");	 
+});
