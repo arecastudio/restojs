@@ -1,2 +1,1 @@
-FROM php:apache
-RUN docker-php-ext-install mysqli && docker-php-ext-enable mysqli
+/media/tux/B23A-BB0F/kristo-app/htdocs/restojs/Dockerfile
